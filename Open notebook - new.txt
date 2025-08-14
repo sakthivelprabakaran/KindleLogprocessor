@@ -1,0 +1,562 @@
+====================================================================================================
+KINDLE LOG ANALYZER - ENHANCED REPORT WITH ORIGINAL LOGS
+====================================================================================================
+
+Test Case: Open Notebook
+Processing Mode: Default (Button Up)
+Generated: 2025-08-14 13:03:40
+Total Iterations: 5
+
+SUMMARY STATISTICS:
+--------------------------------------------------
+Average Duration: 394.00 ms
+Min Duration: 394 ms
+Max Duration: 394 ms
+
+QUICK COPY TABLE (Copy-friendly for Excel):
+--------------------------------------------------------------------------------
+Iteration	Duration(ms)	Start	Stop	Marker	Height	Waveform	Mode
+--------------------------------------------------------------------------------
+1	394	650205	650599	657	2098	glr16 (reagl)	default
+2	394	650205	650599	657	2098	glr16 (reagl)	default
+3	394	650205	650599	657	2098	glr16 (reagl)	default
+4	394	650205	650599	657	2098	glr16 (reagl)	default
+5	394	650205	650599	657	2098	glr16 (reagl)	default
+
+====================================================================================================
+DETAILED ITERATION ANALYSIS WITH ORIGINAL LOGS
+====================================================================================================
+
+ITERATION_01
+==================================================
+
+ORIGINAL LOG DATA:
+------------------------------
+250628:140410 Xorg: I GestureEngine:perfScenario::Clear holdActive : 0
+   250628:140410 Xorg: I GestureEngine:perfScenario::Sending button 1 down 1751099650.083019. MT_BUTTON_STATE 0x0
+   250628:140410 Xorg: I GestureEngine:perfScenario::Can hold : 268369920. Starting timer
+   250628:140410 Xorg: W GestureEngine:Touch::skipping motion event as it leads to the same pixel
+   250628:140410 Xorg: I GestureEngine:perfScenario::Gesture travelling beyond swipe threshold
+   250628:140410 Xorg: I GestureEngine:perfScenario::Sending button 3 down 1751099650.142897. MT_BUTTON_STATE 0x2
+   250628:140410 Xorg: I GestureEngine:perfScenario::Sending button 3 up 1751099650.142917. MT_BUTTON_STATE 0xa
+   250628:140410 Xorg: I GestureEngine:perfScenario::Clear holdActive : 0
+>>> START POINT >>>    250628:140410 Xorg: I GestureEngine:perfScenario::Sending button 1 up 1751099650.205215. MT_BUTTON_STATE 0x2
+[!]250628:140410 [ 2628.964326] .(1)[6505:ResumeThread][HWTCON EPDC][657] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140410 [ 2628.964330] .(1)[6505:ResumeThread][HWTCON EPDC][657] update start marker=657, start time=1751099650302
+[!]250628:140410 [ 2628.979432] .(0)[152:dispatch_pipeli][HWTCON EPDC][657] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=365, left=8, width=1852, height=2098 flags=0x0 rotation=3
+[!]250628:140410 [ 2628.984258] .(0)[152:dispatch_pipeli][HWTCON EPDC][657] current_hist_stat = 0x55555555[3] next_hist_stat = 0x55555555[3] new waveform = 0xa (gc16_partial)
+[!]250628:140410 [ 2628.984272] .(0)[152:dispatch_pipeli][HWTCON EPDC][657] Sending update. waveform:4 (glr16 (reagl)) mode:0x1 update region top=365, left=8, width=1852, height=2098 temp index: 8 rotation=3
+[!]250628:140410 [ 2628.984275] .(0)[152:dispatch_pipeli][HWTCON EPDC][657] Sending update in LUT: 4
+[!]250628:140410 [ 2628.999645] .(0)[6505:ResumeThread][HWTCON EPDC][658] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140410 [ 2628.999648] .(0)[6505:ResumeThread][HWTCON EPDC][658] update start marker=658, start time=1751099650337
+[!]250628:140410 [ 2629.001555] .(1)[152:dispatch_pipeli][HWTCON EPDC][658] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=0, left=136, width=56, height=101 flags=0x0 rotation=3
+[!]250628:140410 [ 2629.001662] .(1)[152:dispatch_pipeli][HWTCON EPDC][658] current_hist_stat = 0x40000000[0] next_hist_stat = 0x1[0] new waveform = 0x1 (du)
+[!]250628:140410 [ 2629.001671] .(1)[152:dispatch_pipeli][HWTCON EPDC][658] Sending update. waveform:1 (du) mode:0x0 update region top=0, left=136, width=56, height=101 temp index: 8 rotation=3
+[!]250628:140410 [ 2629.001674] .(1)[152:dispatch_pipeli][HWTCON EPDC][658] Sending update in LUT: 5
+[!]250628:140410 [ 2629.202329] -(0)[0:swapper/0][HWTCON EPDC][658] update end marker=658, end time=1751099650540, time taken=201 ms
+[!]250628:140410 [ 2629.249920] .(0)[6505:ResumeThread][HWTCON EPDC][659] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140410 [ 2629.249923] .(0)[6505:ResumeThread][HWTCON EPDC][659] update start marker=659, start time=1751099650588
+[!]250628:140410 [ 2629.251047] .(0)[152:dispatch_pipeli][HWTCON EPDC][659] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=33, left=158, width=34, height=34 flags=0x0 rotation=3
+[!]250628:140410 [ 2629.251168] .(0)[152:dispatch_pipeli][HWTCON EPDC][659] current_hist_stat = 0x40000001[0] next_hist_stat = 0x40000001[0] new waveform = 0x1 (du)
+[!]250628:140410 [ 2629.251178] .(0)[152:dispatch_pipeli][HWTCON EPDC][659] Sending update. waveform:1 (du) mode:0x0 update region top=33, left=158, width=34, height=34 temp index: 8 rotation=3
+[!]250628:140410 [ 2629.251180] .(0)[152:dispatch_pipeli][HWTCON EPDC][659] Sending update in LUT: 6
+[!]250628:140410 [ 2629.261700] -(0)[0:swapper/0][HWTCON EPDC][657] update end marker=657, end time=1751099650599, time taken=282 ms
+[!]250628:140410 [ 2629.451720] -(0)[0:swapper/0][HWTCON EPDC][659] update end marker=659, end time=1751099650790, time taken=201 ms
+[!]250628:140410 [ 2629.500368] .(1)[6505:ResumeThread][HWTCON EPDC][660] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140410 [ 2629.500371] .(1)[6505:ResumeThread][HWTCON EPDC][660] update start marker=660, start time=1751099650838
+[!]250628:140410 [ 2629.502544] .(0)[152:dispatch_pipeli][HWTCON EPDC][660] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=33, left=158, width=34, height=34 flags=0x0 rotation=3
+[!]250628:140410 [ 2629.502643] .(0)[152:dispatch_pipeli][HWTCON EPDC][660] current_hist_stat = 0x40000001[0] next_hist_stat = 0x40000001[0] new waveform = 0x1 (du)
+[!]250628:140410 [ 2629.502652] .(0)[152:dispatch_pipeli][HWTCON EPDC][660] Sending update. waveform:1 (du) mode:0x0 update region top=33, left=158, width=34, height=34 temp index: 8 rotation=3
+[!]250628:140410 [ 2629.502654] .(0)[152:dispatch_pipeli][HWTCON EPDC][660] Sending update in LUT: 7
+[!]250628:140411 [ 2629.714688] -(0)[0:swapper/0][HWTCON EPDC][660] update end marker=660, end time=1751099651052, time taken=212 ms
+[!]250628:140411 [ 2629.750818] .(1)[6505:ResumeThread][HWTCON EPDC][661] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140411 [ 2629.750821] .(1)[6505:ResumeThread][HWTCON EPDC][661] update start marker=661, start time=1751099651089
+[!]250628:140411 [ 2629.752968] .(0)[152:dispatch_pipeli][HWTCON EPDC][661] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=33, left=158, width=34, height=34 flags=0x0 rotation=3
+[!]250628:140411 [ 2629.753070] .(0)[152:dispatch_pipeli][HWTCON EPDC][661] current_hist_stat = 0x40000001[0] next_hist_stat = 0x40000001[0] new waveform = 0x1 (du)
+[!]250628:140411 [ 2629.753079] .(0)[152:dispatch_pipeli][HWTCON EPDC][661] Sending update. waveform:1 (du) mode:0x0 update region top=33, left=158, width=34, height=34 temp index: 8 rotation=3
+[!]250628:140411 [ 2629.753082] .(0)[152:dispatch_pipeli][HWTCON EPDC][661] Sending update in LUT: 8
+[!]250628:140411 [ 2629.965094] -(0)[0:swapper/0][HWTCON EPDC][661] update end marker=661, end time=1751099651303, time taken=212 ms
+[!]250628:140411 [ 2630.001283] .(1)[6505:ResumeThread][HWTCON EPDC][662] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140411 [ 2630.001287] .(1)[6505:ResumeThread][HWTCON EPDC][662] update start marker=662, start time=1751099651339
+[!]250628:140411 [ 2630.003389] .(0)[152:dispatch_pipeli][HWTCON EPDC][662] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=33, left=158, width=34, height=34 flags=0x0 rotation=3
+[!]250628:140411 [ 2630.003490] .(0)[152:dispatch_pipeli][HWTCON EPDC][662] current_hist_stat = 0x40000001[0] next_hist_stat = 0x40000001[0] new waveform = 0x1 (du)
+[!]250628:140411 [ 2630.003499] .(0)[152:dispatch_pipeli][HWTCON EPDC][662] Sending update. waveform:1 (du) mode:0x0 update region top=33, left=158, width=34, height=34 temp index: 8 rotation=3
+[!]250628:140411 [ 2630.003502] .(0)[152:dispatch_pipeli][HWTCON EPDC][662] Sending update in LUT: 9
+[!]250628:140411 [ 2630.200598] .(0)[6505:ResumeThread][HWTCON EPDC][663] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140411 [ 2630.200601] .(0)[6505:ResumeThread][HWTCON EPDC][663] update start marker=663, start time=1751099651538
+[!]250628:140411 [ 2630.201943] .(0)[152:dispatch_pipeli][HWTCON EPDC][663] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=0, left=136, width=56, height=101 flags=0x0 rotation=3
+[!]250628:140411 [ 2630.202081] -(1)[152:dispatch_pipeli][HWTCON EPDC]insert task: 0x2646442a01c [50 1671 7 5] to collision list lut_dependency:0x0000000000000200
+[!]250628:140411 [ 2630.202086] .(1)[152:dispatch_pipeli][HWTCON EPDC][663] current_hist_stat = 0x1[0] next_hist_stat = 0x40000000[0] new waveform = 0x1 (du)
+[!]250628:140411 [ 2630.205441] .(1)[6505:ResumeThread][HWTCON EPDC][664] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140411 [ 2630.205445] .(1)[6505:ResumeThread][HWTCON EPDC][664] update start marker=664, start time=1751099651543
+[!]250628:140411 [ 2630.206869] .(1)[152:dispatch_pipeli][HWTCON EPDC][664] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=2462, left=8, width=1852, height=18 flags=0x0 rotation=3
+[!]250628:140411 [ 2630.207064] .(1)[152:dispatch_pipeli][HWTCON EPDC][664] Sending update. VOID update region top=2462, left=8, width=1852, height=18 temp index: 8 rotation=3
+[!]250628:140411 [ 2630.207070] .(1)[152:dispatch_pipeli][HWTCON EPDC][664] update end marker=664, end time=1751099651545, time taken=2 ms
+[!]250628:140411 [ 2630.215618] -(0)[0:swapper/0][HWTCON EPDC][662] update end marker=662, end time=1751099651553, time taken=212 ms
+[!]250628:140411 [ 2630.215639] -(0)[0:swapper/0][HWTCON EPDC]retrigger collision task:0x2646442a01c [50 1671 7 5] wf:auto to mdp_done_list
+[!]250628:140411 [ 2630.215666] .(0)[152:dispatch_pipeli][HWTCON EPDC][663] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=50, left=184, width=5, height=7 flags=0x0 rotation=3
+[!]250628:140411 [ 2630.221360] .(0)[152:dispatch_pipeli][HWTCON EPDC][663] current_hist_stat = 0x1[0] next_hist_stat = 0x40000000[0] new waveform = 0x1 (du)
+[!]250628:140411 [ 2630.221370] .(0)[152:dispatch_pipeli][HWTCON EPDC][663] Sending update. waveform:1 (du) mode:0x0 update region top=50, left=184, width=5, height=7 temp index: 8 rotation=3
+[!]250628:140411 [ 2630.221373] .(0)[152:dispatch_pipeli][HWTCON EPDC][663] Sending update in LUT: 12
+[!]250628:140411 [ 2630.417518] -(0)[471:syslog-ng][HWTCON EPDC][663] update end marker=663, end time=1751099651755, time taken=202 ms
+
+CALCULATION RESULTS:
+------------------------------
+Start Time: 650205
+Stop Time: 650599
+Duration: 394 ms [SELECTED]
+Selected Marker: 657
+Selected Height: 2098px
+Selected Waveform: glr16 (reagl) [HIGHLIGHTED]
+
+ALL HEIGHTS & WAVEFORMS:
+------------------------------
+  Marker 657: 2098px, glr16 (reagl) [SELECTED FOR CALCULATION]
+  Marker 658: 101px, du
+  Marker 659: 34px, du
+  Marker 660: 34px, du
+  Marker 661: 34px, du
+  Marker 662: 34px, du
+  Marker 664: 18px, unknown
+  Marker 663: 7px, du
+
+END TIMES BY MARKER:
+------------------------------
+  Marker 658: 650540
+  Marker 657: 650599 [SELECTED]
+  Marker 659: 650790
+  Marker 660: 651052
+  Marker 661: 651303
+  Marker 664: 651545
+  Marker 662: 651553
+  Marker 663: 651755
+
+==================================================
+
+ITERATION_02
+==================================================
+
+ORIGINAL LOG DATA:
+------------------------------
+250628:140410 Xorg: I GestureEngine:perfScenario::Clear holdActive : 0
+   250628:140410 Xorg: I GestureEngine:perfScenario::Sending button 1 down 1751099650.083019. MT_BUTTON_STATE 0x0
+   250628:140410 Xorg: I GestureEngine:perfScenario::Can hold : 268369920. Starting timer
+   250628:140410 Xorg: W GestureEngine:Touch::skipping motion event as it leads to the same pixel
+   250628:140410 Xorg: I GestureEngine:perfScenario::Gesture travelling beyond swipe threshold
+   250628:140410 Xorg: I GestureEngine:perfScenario::Sending button 3 down 1751099650.142897. MT_BUTTON_STATE 0x2
+   250628:140410 Xorg: I GestureEngine:perfScenario::Sending button 3 up 1751099650.142917. MT_BUTTON_STATE 0xa
+   250628:140410 Xorg: I GestureEngine:perfScenario::Clear holdActive : 0
+>>> START POINT >>>    250628:140410 Xorg: I GestureEngine:perfScenario::Sending button 1 up 1751099650.205215. MT_BUTTON_STATE 0x2
+[!]250628:140410 [ 2628.964326] .(1)[6505:ResumeThread][HWTCON EPDC][657] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140410 [ 2628.964330] .(1)[6505:ResumeThread][HWTCON EPDC][657] update start marker=657, start time=1751099650302
+[!]250628:140410 [ 2628.979432] .(0)[152:dispatch_pipeli][HWTCON EPDC][657] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=365, left=8, width=1852, height=2098 flags=0x0 rotation=3
+[!]250628:140410 [ 2628.984258] .(0)[152:dispatch_pipeli][HWTCON EPDC][657] current_hist_stat = 0x55555555[3] next_hist_stat = 0x55555555[3] new waveform = 0xa (gc16_partial)
+[!]250628:140410 [ 2628.984272] .(0)[152:dispatch_pipeli][HWTCON EPDC][657] Sending update. waveform:4 (glr16 (reagl)) mode:0x1 update region top=365, left=8, width=1852, height=2098 temp index: 8 rotation=3
+[!]250628:140410 [ 2628.984275] .(0)[152:dispatch_pipeli][HWTCON EPDC][657] Sending update in LUT: 4
+[!]250628:140410 [ 2628.999645] .(0)[6505:ResumeThread][HWTCON EPDC][658] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140410 [ 2628.999648] .(0)[6505:ResumeThread][HWTCON EPDC][658] update start marker=658, start time=1751099650337
+[!]250628:140410 [ 2629.001555] .(1)[152:dispatch_pipeli][HWTCON EPDC][658] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=0, left=136, width=56, height=101 flags=0x0 rotation=3
+[!]250628:140410 [ 2629.001662] .(1)[152:dispatch_pipeli][HWTCON EPDC][658] current_hist_stat = 0x40000000[0] next_hist_stat = 0x1[0] new waveform = 0x1 (du)
+[!]250628:140410 [ 2629.001671] .(1)[152:dispatch_pipeli][HWTCON EPDC][658] Sending update. waveform:1 (du) mode:0x0 update region top=0, left=136, width=56, height=101 temp index: 8 rotation=3
+[!]250628:140410 [ 2629.001674] .(1)[152:dispatch_pipeli][HWTCON EPDC][658] Sending update in LUT: 5
+[!]250628:140410 [ 2629.202329] -(0)[0:swapper/0][HWTCON EPDC][658] update end marker=658, end time=1751099650540, time taken=201 ms
+[!]250628:140410 [ 2629.249920] .(0)[6505:ResumeThread][HWTCON EPDC][659] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140410 [ 2629.249923] .(0)[6505:ResumeThread][HWTCON EPDC][659] update start marker=659, start time=1751099650588
+[!]250628:140410 [ 2629.251047] .(0)[152:dispatch_pipeli][HWTCON EPDC][659] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=33, left=158, width=34, height=34 flags=0x0 rotation=3
+[!]250628:140410 [ 2629.251168] .(0)[152:dispatch_pipeli][HWTCON EPDC][659] current_hist_stat = 0x40000001[0] next_hist_stat = 0x40000001[0] new waveform = 0x1 (du)
+[!]250628:140410 [ 2629.251178] .(0)[152:dispatch_pipeli][HWTCON EPDC][659] Sending update. waveform:1 (du) mode:0x0 update region top=33, left=158, width=34, height=34 temp index: 8 rotation=3
+[!]250628:140410 [ 2629.251180] .(0)[152:dispatch_pipeli][HWTCON EPDC][659] Sending update in LUT: 6
+[!]250628:140410 [ 2629.261700] -(0)[0:swapper/0][HWTCON EPDC][657] update end marker=657, end time=1751099650599, time taken=282 ms
+[!]250628:140410 [ 2629.451720] -(0)[0:swapper/0][HWTCON EPDC][659] update end marker=659, end time=1751099650790, time taken=201 ms
+[!]250628:140410 [ 2629.500368] .(1)[6505:ResumeThread][HWTCON EPDC][660] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140410 [ 2629.500371] .(1)[6505:ResumeThread][HWTCON EPDC][660] update start marker=660, start time=1751099650838
+[!]250628:140410 [ 2629.502544] .(0)[152:dispatch_pipeli][HWTCON EPDC][660] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=33, left=158, width=34, height=34 flags=0x0 rotation=3
+[!]250628:140410 [ 2629.502643] .(0)[152:dispatch_pipeli][HWTCON EPDC][660] current_hist_stat = 0x40000001[0] next_hist_stat = 0x40000001[0] new waveform = 0x1 (du)
+[!]250628:140410 [ 2629.502652] .(0)[152:dispatch_pipeli][HWTCON EPDC][660] Sending update. waveform:1 (du) mode:0x0 update region top=33, left=158, width=34, height=34 temp index: 8 rotation=3
+[!]250628:140410 [ 2629.502654] .(0)[152:dispatch_pipeli][HWTCON EPDC][660] Sending update in LUT: 7
+[!]250628:140411 [ 2629.714688] -(0)[0:swapper/0][HWTCON EPDC][660] update end marker=660, end time=1751099651052, time taken=212 ms
+[!]250628:140411 [ 2629.750818] .(1)[6505:ResumeThread][HWTCON EPDC][661] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140411 [ 2629.750821] .(1)[6505:ResumeThread][HWTCON EPDC][661] update start marker=661, start time=1751099651089
+[!]250628:140411 [ 2629.752968] .(0)[152:dispatch_pipeli][HWTCON EPDC][661] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=33, left=158, width=34, height=34 flags=0x0 rotation=3
+[!]250628:140411 [ 2629.753070] .(0)[152:dispatch_pipeli][HWTCON EPDC][661] current_hist_stat = 0x40000001[0] next_hist_stat = 0x40000001[0] new waveform = 0x1 (du)
+[!]250628:140411 [ 2629.753079] .(0)[152:dispatch_pipeli][HWTCON EPDC][661] Sending update. waveform:1 (du) mode:0x0 update region top=33, left=158, width=34, height=34 temp index: 8 rotation=3
+[!]250628:140411 [ 2629.753082] .(0)[152:dispatch_pipeli][HWTCON EPDC][661] Sending update in LUT: 8
+[!]250628:140411 [ 2629.965094] -(0)[0:swapper/0][HWTCON EPDC][661] update end marker=661, end time=1751099651303, time taken=212 ms
+[!]250628:140411 [ 2630.001283] .(1)[6505:ResumeThread][HWTCON EPDC][662] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140411 [ 2630.001287] .(1)[6505:ResumeThread][HWTCON EPDC][662] update start marker=662, start time=1751099651339
+[!]250628:140411 [ 2630.003389] .(0)[152:dispatch_pipeli][HWTCON EPDC][662] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=33, left=158, width=34, height=34 flags=0x0 rotation=3
+[!]250628:140411 [ 2630.003490] .(0)[152:dispatch_pipeli][HWTCON EPDC][662] current_hist_stat = 0x40000001[0] next_hist_stat = 0x40000001[0] new waveform = 0x1 (du)
+[!]250628:140411 [ 2630.003499] .(0)[152:dispatch_pipeli][HWTCON EPDC][662] Sending update. waveform:1 (du) mode:0x0 update region top=33, left=158, width=34, height=34 temp index: 8 rotation=3
+[!]250628:140411 [ 2630.003502] .(0)[152:dispatch_pipeli][HWTCON EPDC][662] Sending update in LUT: 9
+[!]250628:140411 [ 2630.200598] .(0)[6505:ResumeThread][HWTCON EPDC][663] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140411 [ 2630.200601] .(0)[6505:ResumeThread][HWTCON EPDC][663] update start marker=663, start time=1751099651538
+[!]250628:140411 [ 2630.201943] .(0)[152:dispatch_pipeli][HWTCON EPDC][663] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=0, left=136, width=56, height=101 flags=0x0 rotation=3
+[!]250628:140411 [ 2630.202081] -(1)[152:dispatch_pipeli][HWTCON EPDC]insert task: 0x2646442a01c [50 1671 7 5] to collision list lut_dependency:0x0000000000000200
+[!]250628:140411 [ 2630.202086] .(1)[152:dispatch_pipeli][HWTCON EPDC][663] current_hist_stat = 0x1[0] next_hist_stat = 0x40000000[0] new waveform = 0x1 (du)
+[!]250628:140411 [ 2630.205441] .(1)[6505:ResumeThread][HWTCON EPDC][664] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140411 [ 2630.205445] .(1)[6505:ResumeThread][HWTCON EPDC][664] update start marker=664, start time=1751099651543
+[!]250628:140411 [ 2630.206869] .(1)[152:dispatch_pipeli][HWTCON EPDC][664] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=2462, left=8, width=1852, height=18 flags=0x0 rotation=3
+[!]250628:140411 [ 2630.207064] .(1)[152:dispatch_pipeli][HWTCON EPDC][664] Sending update. VOID update region top=2462, left=8, width=1852, height=18 temp index: 8 rotation=3
+[!]250628:140411 [ 2630.207070] .(1)[152:dispatch_pipeli][HWTCON EPDC][664] update end marker=664, end time=1751099651545, time taken=2 ms
+[!]250628:140411 [ 2630.215618] -(0)[0:swapper/0][HWTCON EPDC][662] update end marker=662, end time=1751099651553, time taken=212 ms
+[!]250628:140411 [ 2630.215639] -(0)[0:swapper/0][HWTCON EPDC]retrigger collision task:0x2646442a01c [50 1671 7 5] wf:auto to mdp_done_list
+[!]250628:140411 [ 2630.215666] .(0)[152:dispatch_pipeli][HWTCON EPDC][663] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=50, left=184, width=5, height=7 flags=0x0 rotation=3
+[!]250628:140411 [ 2630.221360] .(0)[152:dispatch_pipeli][HWTCON EPDC][663] current_hist_stat = 0x1[0] next_hist_stat = 0x40000000[0] new waveform = 0x1 (du)
+[!]250628:140411 [ 2630.221370] .(0)[152:dispatch_pipeli][HWTCON EPDC][663] Sending update. waveform:1 (du) mode:0x0 update region top=50, left=184, width=5, height=7 temp index: 8 rotation=3
+[!]250628:140411 [ 2630.221373] .(0)[152:dispatch_pipeli][HWTCON EPDC][663] Sending update in LUT: 12
+[!]250628:140411 [ 2630.417518] -(0)[471:syslog-ng][HWTCON EPDC][663] update end marker=663, end time=1751099651755, time taken=202 ms
+
+CALCULATION RESULTS:
+------------------------------
+Start Time: 650205
+Stop Time: 650599
+Duration: 394 ms [SELECTED]
+Selected Marker: 657
+Selected Height: 2098px
+Selected Waveform: glr16 (reagl) [HIGHLIGHTED]
+
+ALL HEIGHTS & WAVEFORMS:
+------------------------------
+  Marker 657: 2098px, glr16 (reagl) [SELECTED FOR CALCULATION]
+  Marker 658: 101px, du
+  Marker 659: 34px, du
+  Marker 660: 34px, du
+  Marker 661: 34px, du
+  Marker 662: 34px, du
+  Marker 664: 18px, unknown
+  Marker 663: 7px, du
+
+END TIMES BY MARKER:
+------------------------------
+  Marker 658: 650540
+  Marker 657: 650599 [SELECTED]
+  Marker 659: 650790
+  Marker 660: 651052
+  Marker 661: 651303
+  Marker 664: 651545
+  Marker 662: 651553
+  Marker 663: 651755
+
+==================================================
+
+ITERATION_03
+==================================================
+
+ORIGINAL LOG DATA:
+------------------------------
+250628:140410 Xorg: I GestureEngine:perfScenario::Clear holdActive : 0
+   250628:140410 Xorg: I GestureEngine:perfScenario::Sending button 1 down 1751099650.083019. MT_BUTTON_STATE 0x0
+   250628:140410 Xorg: I GestureEngine:perfScenario::Can hold : 268369920. Starting timer
+   250628:140410 Xorg: W GestureEngine:Touch::skipping motion event as it leads to the same pixel
+   250628:140410 Xorg: I GestureEngine:perfScenario::Gesture travelling beyond swipe threshold
+   250628:140410 Xorg: I GestureEngine:perfScenario::Sending button 3 down 1751099650.142897. MT_BUTTON_STATE 0x2
+   250628:140410 Xorg: I GestureEngine:perfScenario::Sending button 3 up 1751099650.142917. MT_BUTTON_STATE 0xa
+   250628:140410 Xorg: I GestureEngine:perfScenario::Clear holdActive : 0
+>>> START POINT >>>    250628:140410 Xorg: I GestureEngine:perfScenario::Sending button 1 up 1751099650.205215. MT_BUTTON_STATE 0x2
+[!]250628:140410 [ 2628.964326] .(1)[6505:ResumeThread][HWTCON EPDC][657] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140410 [ 2628.964330] .(1)[6505:ResumeThread][HWTCON EPDC][657] update start marker=657, start time=1751099650302
+[!]250628:140410 [ 2628.979432] .(0)[152:dispatch_pipeli][HWTCON EPDC][657] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=365, left=8, width=1852, height=2098 flags=0x0 rotation=3
+[!]250628:140410 [ 2628.984258] .(0)[152:dispatch_pipeli][HWTCON EPDC][657] current_hist_stat = 0x55555555[3] next_hist_stat = 0x55555555[3] new waveform = 0xa (gc16_partial)
+[!]250628:140410 [ 2628.984272] .(0)[152:dispatch_pipeli][HWTCON EPDC][657] Sending update. waveform:4 (glr16 (reagl)) mode:0x1 update region top=365, left=8, width=1852, height=2098 temp index: 8 rotation=3
+[!]250628:140410 [ 2628.984275] .(0)[152:dispatch_pipeli][HWTCON EPDC][657] Sending update in LUT: 4
+[!]250628:140410 [ 2628.999645] .(0)[6505:ResumeThread][HWTCON EPDC][658] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140410 [ 2628.999648] .(0)[6505:ResumeThread][HWTCON EPDC][658] update start marker=658, start time=1751099650337
+[!]250628:140410 [ 2629.001555] .(1)[152:dispatch_pipeli][HWTCON EPDC][658] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=0, left=136, width=56, height=101 flags=0x0 rotation=3
+[!]250628:140410 [ 2629.001662] .(1)[152:dispatch_pipeli][HWTCON EPDC][658] current_hist_stat = 0x40000000[0] next_hist_stat = 0x1[0] new waveform = 0x1 (du)
+[!]250628:140410 [ 2629.001671] .(1)[152:dispatch_pipeli][HWTCON EPDC][658] Sending update. waveform:1 (du) mode:0x0 update region top=0, left=136, width=56, height=101 temp index: 8 rotation=3
+[!]250628:140410 [ 2629.001674] .(1)[152:dispatch_pipeli][HWTCON EPDC][658] Sending update in LUT: 5
+[!]250628:140410 [ 2629.202329] -(0)[0:swapper/0][HWTCON EPDC][658] update end marker=658, end time=1751099650540, time taken=201 ms
+[!]250628:140410 [ 2629.249920] .(0)[6505:ResumeThread][HWTCON EPDC][659] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140410 [ 2629.249923] .(0)[6505:ResumeThread][HWTCON EPDC][659] update start marker=659, start time=1751099650588
+[!]250628:140410 [ 2629.251047] .(0)[152:dispatch_pipeli][HWTCON EPDC][659] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=33, left=158, width=34, height=34 flags=0x0 rotation=3
+[!]250628:140410 [ 2629.251168] .(0)[152:dispatch_pipeli][HWTCON EPDC][659] current_hist_stat = 0x40000001[0] next_hist_stat = 0x40000001[0] new waveform = 0x1 (du)
+[!]250628:140410 [ 2629.251178] .(0)[152:dispatch_pipeli][HWTCON EPDC][659] Sending update. waveform:1 (du) mode:0x0 update region top=33, left=158, width=34, height=34 temp index: 8 rotation=3
+[!]250628:140410 [ 2629.251180] .(0)[152:dispatch_pipeli][HWTCON EPDC][659] Sending update in LUT: 6
+[!]250628:140410 [ 2629.261700] -(0)[0:swapper/0][HWTCON EPDC][657] update end marker=657, end time=1751099650599, time taken=282 ms
+[!]250628:140410 [ 2629.451720] -(0)[0:swapper/0][HWTCON EPDC][659] update end marker=659, end time=1751099650790, time taken=201 ms
+[!]250628:140410 [ 2629.500368] .(1)[6505:ResumeThread][HWTCON EPDC][660] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140410 [ 2629.500371] .(1)[6505:ResumeThread][HWTCON EPDC][660] update start marker=660, start time=1751099650838
+[!]250628:140410 [ 2629.502544] .(0)[152:dispatch_pipeli][HWTCON EPDC][660] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=33, left=158, width=34, height=34 flags=0x0 rotation=3
+[!]250628:140410 [ 2629.502643] .(0)[152:dispatch_pipeli][HWTCON EPDC][660] current_hist_stat = 0x40000001[0] next_hist_stat = 0x40000001[0] new waveform = 0x1 (du)
+[!]250628:140410 [ 2629.502652] .(0)[152:dispatch_pipeli][HWTCON EPDC][660] Sending update. waveform:1 (du) mode:0x0 update region top=33, left=158, width=34, height=34 temp index: 8 rotation=3
+[!]250628:140410 [ 2629.502654] .(0)[152:dispatch_pipeli][HWTCON EPDC][660] Sending update in LUT: 7
+[!]250628:140411 [ 2629.714688] -(0)[0:swapper/0][HWTCON EPDC][660] update end marker=660, end time=1751099651052, time taken=212 ms
+[!]250628:140411 [ 2629.750818] .(1)[6505:ResumeThread][HWTCON EPDC][661] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140411 [ 2629.750821] .(1)[6505:ResumeThread][HWTCON EPDC][661] update start marker=661, start time=1751099651089
+[!]250628:140411 [ 2629.752968] .(0)[152:dispatch_pipeli][HWTCON EPDC][661] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=33, left=158, width=34, height=34 flags=0x0 rotation=3
+[!]250628:140411 [ 2629.753070] .(0)[152:dispatch_pipeli][HWTCON EPDC][661] current_hist_stat = 0x40000001[0] next_hist_stat = 0x40000001[0] new waveform = 0x1 (du)
+[!]250628:140411 [ 2629.753079] .(0)[152:dispatch_pipeli][HWTCON EPDC][661] Sending update. waveform:1 (du) mode:0x0 update region top=33, left=158, width=34, height=34 temp index: 8 rotation=3
+[!]250628:140411 [ 2629.753082] .(0)[152:dispatch_pipeli][HWTCON EPDC][661] Sending update in LUT: 8
+[!]250628:140411 [ 2629.965094] -(0)[0:swapper/0][HWTCON EPDC][661] update end marker=661, end time=1751099651303, time taken=212 ms
+[!]250628:140411 [ 2630.001283] .(1)[6505:ResumeThread][HWTCON EPDC][662] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140411 [ 2630.001287] .(1)[6505:ResumeThread][HWTCON EPDC][662] update start marker=662, start time=1751099651339
+[!]250628:140411 [ 2630.003389] .(0)[152:dispatch_pipeli][HWTCON EPDC][662] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=33, left=158, width=34, height=34 flags=0x0 rotation=3
+[!]250628:140411 [ 2630.003490] .(0)[152:dispatch_pipeli][HWTCON EPDC][662] current_hist_stat = 0x40000001[0] next_hist_stat = 0x40000001[0] new waveform = 0x1 (du)
+[!]250628:140411 [ 2630.003499] .(0)[152:dispatch_pipeli][HWTCON EPDC][662] Sending update. waveform:1 (du) mode:0x0 update region top=33, left=158, width=34, height=34 temp index: 8 rotation=3
+[!]250628:140411 [ 2630.003502] .(0)[152:dispatch_pipeli][HWTCON EPDC][662] Sending update in LUT: 9
+[!]250628:140411 [ 2630.200598] .(0)[6505:ResumeThread][HWTCON EPDC][663] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140411 [ 2630.200601] .(0)[6505:ResumeThread][HWTCON EPDC][663] update start marker=663, start time=1751099651538
+[!]250628:140411 [ 2630.201943] .(0)[152:dispatch_pipeli][HWTCON EPDC][663] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=0, left=136, width=56, height=101 flags=0x0 rotation=3
+[!]250628:140411 [ 2630.202081] -(1)[152:dispatch_pipeli][HWTCON EPDC]insert task: 0x2646442a01c [50 1671 7 5] to collision list lut_dependency:0x0000000000000200
+[!]250628:140411 [ 2630.202086] .(1)[152:dispatch_pipeli][HWTCON EPDC][663] current_hist_stat = 0x1[0] next_hist_stat = 0x40000000[0] new waveform = 0x1 (du)
+[!]250628:140411 [ 2630.205441] .(1)[6505:ResumeThread][HWTCON EPDC][664] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140411 [ 2630.205445] .(1)[6505:ResumeThread][HWTCON EPDC][664] update start marker=664, start time=1751099651543
+[!]250628:140411 [ 2630.206869] .(1)[152:dispatch_pipeli][HWTCON EPDC][664] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=2462, left=8, width=1852, height=18 flags=0x0 rotation=3
+[!]250628:140411 [ 2630.207064] .(1)[152:dispatch_pipeli][HWTCON EPDC][664] Sending update. VOID update region top=2462, left=8, width=1852, height=18 temp index: 8 rotation=3
+[!]250628:140411 [ 2630.207070] .(1)[152:dispatch_pipeli][HWTCON EPDC][664] update end marker=664, end time=1751099651545, time taken=2 ms
+[!]250628:140411 [ 2630.215618] -(0)[0:swapper/0][HWTCON EPDC][662] update end marker=662, end time=1751099651553, time taken=212 ms
+[!]250628:140411 [ 2630.215639] -(0)[0:swapper/0][HWTCON EPDC]retrigger collision task:0x2646442a01c [50 1671 7 5] wf:auto to mdp_done_list
+[!]250628:140411 [ 2630.215666] .(0)[152:dispatch_pipeli][HWTCON EPDC][663] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=50, left=184, width=5, height=7 flags=0x0 rotation=3
+[!]250628:140411 [ 2630.221360] .(0)[152:dispatch_pipeli][HWTCON EPDC][663] current_hist_stat = 0x1[0] next_hist_stat = 0x40000000[0] new waveform = 0x1 (du)
+[!]250628:140411 [ 2630.221370] .(0)[152:dispatch_pipeli][HWTCON EPDC][663] Sending update. waveform:1 (du) mode:0x0 update region top=50, left=184, width=5, height=7 temp index: 8 rotation=3
+[!]250628:140411 [ 2630.221373] .(0)[152:dispatch_pipeli][HWTCON EPDC][663] Sending update in LUT: 12
+[!]250628:140411 [ 2630.417518] -(0)[471:syslog-ng][HWTCON EPDC][663] update end marker=663, end time=1751099651755, time taken=202 ms
+
+CALCULATION RESULTS:
+------------------------------
+Start Time: 650205
+Stop Time: 650599
+Duration: 394 ms [SELECTED]
+Selected Marker: 657
+Selected Height: 2098px
+Selected Waveform: glr16 (reagl) [HIGHLIGHTED]
+
+ALL HEIGHTS & WAVEFORMS:
+------------------------------
+  Marker 657: 2098px, glr16 (reagl) [SELECTED FOR CALCULATION]
+  Marker 658: 101px, du
+  Marker 659: 34px, du
+  Marker 660: 34px, du
+  Marker 661: 34px, du
+  Marker 662: 34px, du
+  Marker 664: 18px, unknown
+  Marker 663: 7px, du
+
+END TIMES BY MARKER:
+------------------------------
+  Marker 658: 650540
+  Marker 657: 650599 [SELECTED]
+  Marker 659: 650790
+  Marker 660: 651052
+  Marker 661: 651303
+  Marker 664: 651545
+  Marker 662: 651553
+  Marker 663: 651755
+
+==================================================
+
+ITERATION_04
+==================================================
+
+ORIGINAL LOG DATA:
+------------------------------
+250628:140410 Xorg: I GestureEngine:perfScenario::Clear holdActive : 0
+   250628:140410 Xorg: I GestureEngine:perfScenario::Sending button 1 down 1751099650.083019. MT_BUTTON_STATE 0x0
+   250628:140410 Xorg: I GestureEngine:perfScenario::Can hold : 268369920. Starting timer
+   250628:140410 Xorg: W GestureEngine:Touch::skipping motion event as it leads to the same pixel
+   250628:140410 Xorg: I GestureEngine:perfScenario::Gesture travelling beyond swipe threshold
+   250628:140410 Xorg: I GestureEngine:perfScenario::Sending button 3 down 1751099650.142897. MT_BUTTON_STATE 0x2
+   250628:140410 Xorg: I GestureEngine:perfScenario::Sending button 3 up 1751099650.142917. MT_BUTTON_STATE 0xa
+   250628:140410 Xorg: I GestureEngine:perfScenario::Clear holdActive : 0
+>>> START POINT >>>    250628:140410 Xorg: I GestureEngine:perfScenario::Sending button 1 up 1751099650.205215. MT_BUTTON_STATE 0x2
+[!]250628:140410 [ 2628.964326] .(1)[6505:ResumeThread][HWTCON EPDC][657] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140410 [ 2628.964330] .(1)[6505:ResumeThread][HWTCON EPDC][657] update start marker=657, start time=1751099650302
+[!]250628:140410 [ 2628.979432] .(0)[152:dispatch_pipeli][HWTCON EPDC][657] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=365, left=8, width=1852, height=2098 flags=0x0 rotation=3
+[!]250628:140410 [ 2628.984258] .(0)[152:dispatch_pipeli][HWTCON EPDC][657] current_hist_stat = 0x55555555[3] next_hist_stat = 0x55555555[3] new waveform = 0xa (gc16_partial)
+[!]250628:140410 [ 2628.984272] .(0)[152:dispatch_pipeli][HWTCON EPDC][657] Sending update. waveform:4 (glr16 (reagl)) mode:0x1 update region top=365, left=8, width=1852, height=2098 temp index: 8 rotation=3
+[!]250628:140410 [ 2628.984275] .(0)[152:dispatch_pipeli][HWTCON EPDC][657] Sending update in LUT: 4
+[!]250628:140410 [ 2628.999645] .(0)[6505:ResumeThread][HWTCON EPDC][658] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140410 [ 2628.999648] .(0)[6505:ResumeThread][HWTCON EPDC][658] update start marker=658, start time=1751099650337
+[!]250628:140410 [ 2629.001555] .(1)[152:dispatch_pipeli][HWTCON EPDC][658] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=0, left=136, width=56, height=101 flags=0x0 rotation=3
+[!]250628:140410 [ 2629.001662] .(1)[152:dispatch_pipeli][HWTCON EPDC][658] current_hist_stat = 0x40000000[0] next_hist_stat = 0x1[0] new waveform = 0x1 (du)
+[!]250628:140410 [ 2629.001671] .(1)[152:dispatch_pipeli][HWTCON EPDC][658] Sending update. waveform:1 (du) mode:0x0 update region top=0, left=136, width=56, height=101 temp index: 8 rotation=3
+[!]250628:140410 [ 2629.001674] .(1)[152:dispatch_pipeli][HWTCON EPDC][658] Sending update in LUT: 5
+[!]250628:140410 [ 2629.202329] -(0)[0:swapper/0][HWTCON EPDC][658] update end marker=658, end time=1751099650540, time taken=201 ms
+[!]250628:140410 [ 2629.249920] .(0)[6505:ResumeThread][HWTCON EPDC][659] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140410 [ 2629.249923] .(0)[6505:ResumeThread][HWTCON EPDC][659] update start marker=659, start time=1751099650588
+[!]250628:140410 [ 2629.251047] .(0)[152:dispatch_pipeli][HWTCON EPDC][659] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=33, left=158, width=34, height=34 flags=0x0 rotation=3
+[!]250628:140410 [ 2629.251168] .(0)[152:dispatch_pipeli][HWTCON EPDC][659] current_hist_stat = 0x40000001[0] next_hist_stat = 0x40000001[0] new waveform = 0x1 (du)
+[!]250628:140410 [ 2629.251178] .(0)[152:dispatch_pipeli][HWTCON EPDC][659] Sending update. waveform:1 (du) mode:0x0 update region top=33, left=158, width=34, height=34 temp index: 8 rotation=3
+[!]250628:140410 [ 2629.251180] .(0)[152:dispatch_pipeli][HWTCON EPDC][659] Sending update in LUT: 6
+[!]250628:140410 [ 2629.261700] -(0)[0:swapper/0][HWTCON EPDC][657] update end marker=657, end time=1751099650599, time taken=282 ms
+[!]250628:140410 [ 2629.451720] -(0)[0:swapper/0][HWTCON EPDC][659] update end marker=659, end time=1751099650790, time taken=201 ms
+[!]250628:140410 [ 2629.500368] .(1)[6505:ResumeThread][HWTCON EPDC][660] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140410 [ 2629.500371] .(1)[6505:ResumeThread][HWTCON EPDC][660] update start marker=660, start time=1751099650838
+[!]250628:140410 [ 2629.502544] .(0)[152:dispatch_pipeli][HWTCON EPDC][660] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=33, left=158, width=34, height=34 flags=0x0 rotation=3
+[!]250628:140410 [ 2629.502643] .(0)[152:dispatch_pipeli][HWTCON EPDC][660] current_hist_stat = 0x40000001[0] next_hist_stat = 0x40000001[0] new waveform = 0x1 (du)
+[!]250628:140410 [ 2629.502652] .(0)[152:dispatch_pipeli][HWTCON EPDC][660] Sending update. waveform:1 (du) mode:0x0 update region top=33, left=158, width=34, height=34 temp index: 8 rotation=3
+[!]250628:140410 [ 2629.502654] .(0)[152:dispatch_pipeli][HWTCON EPDC][660] Sending update in LUT: 7
+[!]250628:140411 [ 2629.714688] -(0)[0:swapper/0][HWTCON EPDC][660] update end marker=660, end time=1751099651052, time taken=212 ms
+[!]250628:140411 [ 2629.750818] .(1)[6505:ResumeThread][HWTCON EPDC][661] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140411 [ 2629.750821] .(1)[6505:ResumeThread][HWTCON EPDC][661] update start marker=661, start time=1751099651089
+[!]250628:140411 [ 2629.752968] .(0)[152:dispatch_pipeli][HWTCON EPDC][661] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=33, left=158, width=34, height=34 flags=0x0 rotation=3
+[!]250628:140411 [ 2629.753070] .(0)[152:dispatch_pipeli][HWTCON EPDC][661] current_hist_stat = 0x40000001[0] next_hist_stat = 0x40000001[0] new waveform = 0x1 (du)
+[!]250628:140411 [ 2629.753079] .(0)[152:dispatch_pipeli][HWTCON EPDC][661] Sending update. waveform:1 (du) mode:0x0 update region top=33, left=158, width=34, height=34 temp index: 8 rotation=3
+[!]250628:140411 [ 2629.753082] .(0)[152:dispatch_pipeli][HWTCON EPDC][661] Sending update in LUT: 8
+[!]250628:140411 [ 2629.965094] -(0)[0:swapper/0][HWTCON EPDC][661] update end marker=661, end time=1751099651303, time taken=212 ms
+[!]250628:140411 [ 2630.001283] .(1)[6505:ResumeThread][HWTCON EPDC][662] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140411 [ 2630.001287] .(1)[6505:ResumeThread][HWTCON EPDC][662] update start marker=662, start time=1751099651339
+[!]250628:140411 [ 2630.003389] .(0)[152:dispatch_pipeli][HWTCON EPDC][662] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=33, left=158, width=34, height=34 flags=0x0 rotation=3
+[!]250628:140411 [ 2630.003490] .(0)[152:dispatch_pipeli][HWTCON EPDC][662] current_hist_stat = 0x40000001[0] next_hist_stat = 0x40000001[0] new waveform = 0x1 (du)
+[!]250628:140411 [ 2630.003499] .(0)[152:dispatch_pipeli][HWTCON EPDC][662] Sending update. waveform:1 (du) mode:0x0 update region top=33, left=158, width=34, height=34 temp index: 8 rotation=3
+[!]250628:140411 [ 2630.003502] .(0)[152:dispatch_pipeli][HWTCON EPDC][662] Sending update in LUT: 9
+[!]250628:140411 [ 2630.200598] .(0)[6505:ResumeThread][HWTCON EPDC][663] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140411 [ 2630.200601] .(0)[6505:ResumeThread][HWTCON EPDC][663] update start marker=663, start time=1751099651538
+[!]250628:140411 [ 2630.201943] .(0)[152:dispatch_pipeli][HWTCON EPDC][663] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=0, left=136, width=56, height=101 flags=0x0 rotation=3
+[!]250628:140411 [ 2630.202081] -(1)[152:dispatch_pipeli][HWTCON EPDC]insert task: 0x2646442a01c [50 1671 7 5] to collision list lut_dependency:0x0000000000000200
+[!]250628:140411 [ 2630.202086] .(1)[152:dispatch_pipeli][HWTCON EPDC][663] current_hist_stat = 0x1[0] next_hist_stat = 0x40000000[0] new waveform = 0x1 (du)
+[!]250628:140411 [ 2630.205441] .(1)[6505:ResumeThread][HWTCON EPDC][664] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140411 [ 2630.205445] .(1)[6505:ResumeThread][HWTCON EPDC][664] update start marker=664, start time=1751099651543
+[!]250628:140411 [ 2630.206869] .(1)[152:dispatch_pipeli][HWTCON EPDC][664] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=2462, left=8, width=1852, height=18 flags=0x0 rotation=3
+[!]250628:140411 [ 2630.207064] .(1)[152:dispatch_pipeli][HWTCON EPDC][664] Sending update. VOID update region top=2462, left=8, width=1852, height=18 temp index: 8 rotation=3
+[!]250628:140411 [ 2630.207070] .(1)[152:dispatch_pipeli][HWTCON EPDC][664] update end marker=664, end time=1751099651545, time taken=2 ms
+[!]250628:140411 [ 2630.215618] -(0)[0:swapper/0][HWTCON EPDC][662] update end marker=662, end time=1751099651553, time taken=212 ms
+[!]250628:140411 [ 2630.215639] -(0)[0:swapper/0][HWTCON EPDC]retrigger collision task:0x2646442a01c [50 1671 7 5] wf:auto to mdp_done_list
+[!]250628:140411 [ 2630.215666] .(0)[152:dispatch_pipeli][HWTCON EPDC][663] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=50, left=184, width=5, height=7 flags=0x0 rotation=3
+[!]250628:140411 [ 2630.221360] .(0)[152:dispatch_pipeli][HWTCON EPDC][663] current_hist_stat = 0x1[0] next_hist_stat = 0x40000000[0] new waveform = 0x1 (du)
+[!]250628:140411 [ 2630.221370] .(0)[152:dispatch_pipeli][HWTCON EPDC][663] Sending update. waveform:1 (du) mode:0x0 update region top=50, left=184, width=5, height=7 temp index: 8 rotation=3
+[!]250628:140411 [ 2630.221373] .(0)[152:dispatch_pipeli][HWTCON EPDC][663] Sending update in LUT: 12
+[!]250628:140411 [ 2630.417518] -(0)[471:syslog-ng][HWTCON EPDC][663] update end marker=663, end time=1751099651755, time taken=202 ms
+
+CALCULATION RESULTS:
+------------------------------
+Start Time: 650205
+Stop Time: 650599
+Duration: 394 ms [SELECTED]
+Selected Marker: 657
+Selected Height: 2098px
+Selected Waveform: glr16 (reagl) [HIGHLIGHTED]
+
+ALL HEIGHTS & WAVEFORMS:
+------------------------------
+  Marker 657: 2098px, glr16 (reagl) [SELECTED FOR CALCULATION]
+  Marker 658: 101px, du
+  Marker 659: 34px, du
+  Marker 660: 34px, du
+  Marker 661: 34px, du
+  Marker 662: 34px, du
+  Marker 664: 18px, unknown
+  Marker 663: 7px, du
+
+END TIMES BY MARKER:
+------------------------------
+  Marker 658: 650540
+  Marker 657: 650599 [SELECTED]
+  Marker 659: 650790
+  Marker 660: 651052
+  Marker 661: 651303
+  Marker 664: 651545
+  Marker 662: 651553
+  Marker 663: 651755
+
+==================================================
+
+ITERATION_05
+==================================================
+
+ORIGINAL LOG DATA:
+------------------------------
+250628:140410 Xorg: I GestureEngine:perfScenario::Clear holdActive : 0
+   250628:140410 Xorg: I GestureEngine:perfScenario::Sending button 1 down 1751099650.083019. MT_BUTTON_STATE 0x0
+   250628:140410 Xorg: I GestureEngine:perfScenario::Can hold : 268369920. Starting timer
+   250628:140410 Xorg: W GestureEngine:Touch::skipping motion event as it leads to the same pixel
+   250628:140410 Xorg: I GestureEngine:perfScenario::Gesture travelling beyond swipe threshold
+   250628:140410 Xorg: I GestureEngine:perfScenario::Sending button 3 down 1751099650.142897. MT_BUTTON_STATE 0x2
+   250628:140410 Xorg: I GestureEngine:perfScenario::Sending button 3 up 1751099650.142917. MT_BUTTON_STATE 0xa
+   250628:140410 Xorg: I GestureEngine:perfScenario::Clear holdActive : 0
+>>> START POINT >>>    250628:140410 Xorg: I GestureEngine:perfScenario::Sending button 1 up 1751099650.205215. MT_BUTTON_STATE 0x2
+[!]250628:140410 [ 2628.964326] .(1)[6505:ResumeThread][HWTCON EPDC][657] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140410 [ 2628.964330] .(1)[6505:ResumeThread][HWTCON EPDC][657] update start marker=657, start time=1751099650302
+[!]250628:140410 [ 2628.979432] .(0)[152:dispatch_pipeli][HWTCON EPDC][657] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=365, left=8, width=1852, height=2098 flags=0x0 rotation=3
+[!]250628:140410 [ 2628.984258] .(0)[152:dispatch_pipeli][HWTCON EPDC][657] current_hist_stat = 0x55555555[3] next_hist_stat = 0x55555555[3] new waveform = 0xa (gc16_partial)
+[!]250628:140410 [ 2628.984272] .(0)[152:dispatch_pipeli][HWTCON EPDC][657] Sending update. waveform:4 (glr16 (reagl)) mode:0x1 update region top=365, left=8, width=1852, height=2098 temp index: 8 rotation=3
+[!]250628:140410 [ 2628.984275] .(0)[152:dispatch_pipeli][HWTCON EPDC][657] Sending update in LUT: 4
+[!]250628:140410 [ 2628.999645] .(0)[6505:ResumeThread][HWTCON EPDC][658] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140410 [ 2628.999648] .(0)[6505:ResumeThread][HWTCON EPDC][658] update start marker=658, start time=1751099650337
+[!]250628:140410 [ 2629.001555] .(1)[152:dispatch_pipeli][HWTCON EPDC][658] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=0, left=136, width=56, height=101 flags=0x0 rotation=3
+[!]250628:140410 [ 2629.001662] .(1)[152:dispatch_pipeli][HWTCON EPDC][658] current_hist_stat = 0x40000000[0] next_hist_stat = 0x1[0] new waveform = 0x1 (du)
+[!]250628:140410 [ 2629.001671] .(1)[152:dispatch_pipeli][HWTCON EPDC][658] Sending update. waveform:1 (du) mode:0x0 update region top=0, left=136, width=56, height=101 temp index: 8 rotation=3
+[!]250628:140410 [ 2629.001674] .(1)[152:dispatch_pipeli][HWTCON EPDC][658] Sending update in LUT: 5
+[!]250628:140410 [ 2629.202329] -(0)[0:swapper/0][HWTCON EPDC][658] update end marker=658, end time=1751099650540, time taken=201 ms
+[!]250628:140410 [ 2629.249920] .(0)[6505:ResumeThread][HWTCON EPDC][659] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140410 [ 2629.249923] .(0)[6505:ResumeThread][HWTCON EPDC][659] update start marker=659, start time=1751099650588
+[!]250628:140410 [ 2629.251047] .(0)[152:dispatch_pipeli][HWTCON EPDC][659] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=33, left=158, width=34, height=34 flags=0x0 rotation=3
+[!]250628:140410 [ 2629.251168] .(0)[152:dispatch_pipeli][HWTCON EPDC][659] current_hist_stat = 0x40000001[0] next_hist_stat = 0x40000001[0] new waveform = 0x1 (du)
+[!]250628:140410 [ 2629.251178] .(0)[152:dispatch_pipeli][HWTCON EPDC][659] Sending update. waveform:1 (du) mode:0x0 update region top=33, left=158, width=34, height=34 temp index: 8 rotation=3
+[!]250628:140410 [ 2629.251180] .(0)[152:dispatch_pipeli][HWTCON EPDC][659] Sending update in LUT: 6
+[!]250628:140410 [ 2629.261700] -(0)[0:swapper/0][HWTCON EPDC][657] update end marker=657, end time=1751099650599, time taken=282 ms
+[!]250628:140410 [ 2629.451720] -(0)[0:swapper/0][HWTCON EPDC][659] update end marker=659, end time=1751099650790, time taken=201 ms
+[!]250628:140410 [ 2629.500368] .(1)[6505:ResumeThread][HWTCON EPDC][660] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140410 [ 2629.500371] .(1)[6505:ResumeThread][HWTCON EPDC][660] update start marker=660, start time=1751099650838
+[!]250628:140410 [ 2629.502544] .(0)[152:dispatch_pipeli][HWTCON EPDC][660] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=33, left=158, width=34, height=34 flags=0x0 rotation=3
+[!]250628:140410 [ 2629.502643] .(0)[152:dispatch_pipeli][HWTCON EPDC][660] current_hist_stat = 0x40000001[0] next_hist_stat = 0x40000001[0] new waveform = 0x1 (du)
+[!]250628:140410 [ 2629.502652] .(0)[152:dispatch_pipeli][HWTCON EPDC][660] Sending update. waveform:1 (du) mode:0x0 update region top=33, left=158, width=34, height=34 temp index: 8 rotation=3
+[!]250628:140410 [ 2629.502654] .(0)[152:dispatch_pipeli][HWTCON EPDC][660] Sending update in LUT: 7
+[!]250628:140411 [ 2629.714688] -(0)[0:swapper/0][HWTCON EPDC][660] update end marker=660, end time=1751099651052, time taken=212 ms
+[!]250628:140411 [ 2629.750818] .(1)[6505:ResumeThread][HWTCON EPDC][661] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140411 [ 2629.750821] .(1)[6505:ResumeThread][HWTCON EPDC][661] update start marker=661, start time=1751099651089
+[!]250628:140411 [ 2629.752968] .(0)[152:dispatch_pipeli][HWTCON EPDC][661] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=33, left=158, width=34, height=34 flags=0x0 rotation=3
+[!]250628:140411 [ 2629.753070] .(0)[152:dispatch_pipeli][HWTCON EPDC][661] current_hist_stat = 0x40000001[0] next_hist_stat = 0x40000001[0] new waveform = 0x1 (du)
+[!]250628:140411 [ 2629.753079] .(0)[152:dispatch_pipeli][HWTCON EPDC][661] Sending update. waveform:1 (du) mode:0x0 update region top=33, left=158, width=34, height=34 temp index: 8 rotation=3
+[!]250628:140411 [ 2629.753082] .(0)[152:dispatch_pipeli][HWTCON EPDC][661] Sending update in LUT: 8
+[!]250628:140411 [ 2629.965094] -(0)[0:swapper/0][HWTCON EPDC][661] update end marker=661, end time=1751099651303, time taken=212 ms
+[!]250628:140411 [ 2630.001283] .(1)[6505:ResumeThread][HWTCON EPDC][662] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140411 [ 2630.001287] .(1)[6505:ResumeThread][HWTCON EPDC][662] update start marker=662, start time=1751099651339
+[!]250628:140411 [ 2630.003389] .(0)[152:dispatch_pipeli][HWTCON EPDC][662] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=33, left=158, width=34, height=34 flags=0x0 rotation=3
+[!]250628:140411 [ 2630.003490] .(0)[152:dispatch_pipeli][HWTCON EPDC][662] current_hist_stat = 0x40000001[0] next_hist_stat = 0x40000001[0] new waveform = 0x1 (du)
+[!]250628:140411 [ 2630.003499] .(0)[152:dispatch_pipeli][HWTCON EPDC][662] Sending update. waveform:1 (du) mode:0x0 update region top=33, left=158, width=34, height=34 temp index: 8 rotation=3
+[!]250628:140411 [ 2630.003502] .(0)[152:dispatch_pipeli][HWTCON EPDC][662] Sending update in LUT: 9
+[!]250628:140411 [ 2630.200598] .(0)[6505:ResumeThread][HWTCON EPDC][663] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140411 [ 2630.200601] .(0)[6505:ResumeThread][HWTCON EPDC][663] update start marker=663, start time=1751099651538
+[!]250628:140411 [ 2630.201943] .(0)[152:dispatch_pipeli][HWTCON EPDC][663] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=0, left=136, width=56, height=101 flags=0x0 rotation=3
+[!]250628:140411 [ 2630.202081] -(1)[152:dispatch_pipeli][HWTCON EPDC]insert task: 0x2646442a01c [50 1671 7 5] to collision list lut_dependency:0x0000000000000200
+[!]250628:140411 [ 2630.202086] .(1)[152:dispatch_pipeli][HWTCON EPDC][663] current_hist_stat = 0x1[0] next_hist_stat = 0x40000000[0] new waveform = 0x1 (du)
+[!]250628:140411 [ 2630.205441] .(1)[6505:ResumeThread][HWTCON EPDC][664] Requested waveforms: mode: 0x101 (auto) __ BW: 0x1 (du) __ Gray : 0x2 (gc16)
+[!]250628:140411 [ 2630.205445] .(1)[6505:ResumeThread][HWTCON EPDC][664] update start marker=664, start time=1751099651543
+[!]250628:140411 [ 2630.206869] .(1)[152:dispatch_pipeli][HWTCON EPDC][664] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=2462, left=8, width=1852, height=18 flags=0x0 rotation=3
+[!]250628:140411 [ 2630.207064] .(1)[152:dispatch_pipeli][HWTCON EPDC][664] Sending update. VOID update region top=2462, left=8, width=1852, height=18 temp index: 8 rotation=3
+[!]250628:140411 [ 2630.207070] .(1)[152:dispatch_pipeli][HWTCON EPDC][664] update end marker=664, end time=1751099651545, time taken=2 ms
+[!]250628:140411 [ 2630.215618] -(0)[0:swapper/0][HWTCON EPDC][662] update end marker=662, end time=1751099651553, time taken=212 ms
+[!]250628:140411 [ 2630.215639] -(0)[0:swapper/0][HWTCON EPDC]retrigger collision task:0x2646442a01c [50 1671 7 5] wf:auto to mdp_done_list
+[!]250628:140411 [ 2630.215666] .(0)[152:dispatch_pipeli][HWTCON EPDC][663] waveform=0x101 (auto) mode=0x0 temp:4096 update region top=50, left=184, width=5, height=7 flags=0x0 rotation=3
+[!]250628:140411 [ 2630.221360] .(0)[152:dispatch_pipeli][HWTCON EPDC][663] current_hist_stat = 0x1[0] next_hist_stat = 0x40000000[0] new waveform = 0x1 (du)
+[!]250628:140411 [ 2630.221370] .(0)[152:dispatch_pipeli][HWTCON EPDC][663] Sending update. waveform:1 (du) mode:0x0 update region top=50, left=184, width=5, height=7 temp index: 8 rotation=3
+[!]250628:140411 [ 2630.221373] .(0)[152:dispatch_pipeli][HWTCON EPDC][663] Sending update in LUT: 12
+[!]250628:140411 [ 2630.417518] -(0)[471:syslog-ng][HWTCON EPDC][663] update end marker=663, end time=1751099651755, time taken=202 ms
+
+CALCULATION RESULTS:
+------------------------------
+Start Time: 650205
+Stop Time: 650599
+Duration: 394 ms [SELECTED]
+Selected Marker: 657
+Selected Height: 2098px
+Selected Waveform: glr16 (reagl) [HIGHLIGHTED]
+
+ALL HEIGHTS & WAVEFORMS:
+------------------------------
+  Marker 657: 2098px, glr16 (reagl) [SELECTED FOR CALCULATION]
+  Marker 658: 101px, du
+  Marker 659: 34px, du
+  Marker 660: 34px, du
+  Marker 661: 34px, du
+  Marker 662: 34px, du
+  Marker 664: 18px, unknown
+  Marker 663: 7px, du
+
+END TIMES BY MARKER:
+------------------------------
+  Marker 658: 650540
+  Marker 657: 650599 [SELECTED]
+  Marker 659: 650790
+  Marker 660: 651052
+  Marker 661: 651303
+  Marker 664: 651545
+  Marker 662: 651553
+  Marker 663: 651755
+
+==================================================
+
+====================================================================================================
+END OF ENHANCED REPORT
+====================================================================================================
