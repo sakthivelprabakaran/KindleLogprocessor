@@ -845,6 +845,7 @@ class FinalKindleLogAnalyzer(QMainWindow):
                     margin: 8px 0px;
                     padding-top: 10px;
                     background-color: #3c3c3c;
+                    color: #ffffff;
                 }
                 QGroupBox::title {
                     subcontrol-origin: margin;
@@ -885,6 +886,8 @@ class FinalKindleLogAnalyzer(QMainWindow):
                     alternate-background-color: #4a4a4a;
                     color: #ffffff;
                     gridline-color: #555555;
+                    selection-background-color: #0d7377;
+                    selection-color: #ffffff;
                 }
                 QHeaderView::section {
                     background-color: #0d7377;
@@ -927,24 +930,35 @@ class FinalKindleLogAnalyzer(QMainWindow):
                     background-color: #3c3c3c;
                     border: 1px solid #555555;
                 }
+                QLabel {
+                    color: #ffffff;
+                }
             """)
         else:
             # Light mode styling
             self.setStyleSheet("""
                 QMainWindow {
-                    background-color: #ffffff;
+                    background-color: #f0f0f0;
+                    color: #333333;
+                }
+                QWidget {
+                    background-color: #f0f0f0;
+                    color: #333333;
                 }
                 QGroupBox {
                     font-weight: bold;
-                    border: 2px solid #e1e8ed;
+                    border: 2px solid #cccccc;
                     border-radius: 8px;
                     margin: 8px 0px;
                     padding-top: 10px;
+                    background-color: #ffffff;
+                    color: #333333;
                 }
                 QGroupBox::title {
                     subcontrol-origin: margin;
                     left: 10px;
                     padding: 0 8px 0 8px;
+                    color: #333333;
                 }
                 QPushButton {
                     background-color: #4a90e2;
@@ -965,31 +979,38 @@ class FinalKindleLogAnalyzer(QMainWindow):
                     color: #666666;
                 }
                 QLineEdit, QTextEdit, QComboBox {
-                    border: 2px solid #e1e8ed;
+                    border: 2px solid #cccccc;
                     border-radius: 4px;
                     padding: 8px;
                     background-color: #ffffff;
+                    color: #333333;
                 }
                 QLineEdit:focus, QTextEdit:focus, QComboBox:focus {
                     border-color: #4a90e2;
                 }
                 QTableWidget {
+                    background-color: #ffffff;
                     alternate-background-color: #f8f9fa;
+                    color: #333333;
                     gridline-color: #e1e8ed;
+                    selection-background-color: #4a90e2;
+                    selection-color: #ffffff;
                 }
                 QHeaderView::section {
                     background-color: #4a90e2;
                     color: white;
                     padding: 8px;
-                    border: 1px solid #e1e8ed;
+                    border: 1px solid #cccccc;
                     font-weight: bold;
                 }
                 QTabWidget::pane {
-                    border: 1px solid #e1e8ed;
+                    border: 1px solid #cccccc;
+                    background-color: #ffffff;
                     border-radius: 4px;
                 }
                 QTabBar::tab {
-                    background: #f8f9fa;
+                    background: #e0e0e0;
+                    color: #333333;
                     padding: 10px 16px;
                     margin-right: 2px;
                     border-top-left-radius: 4px;
@@ -998,6 +1019,27 @@ class FinalKindleLogAnalyzer(QMainWindow):
                 QTabBar::tab:selected {
                     background: #4a90e2;
                     color: white;
+                }
+                QListWidget {
+                    background-color: #ffffff;
+                    color: #333333;
+                    border: 2px solid #cccccc;
+                }
+                QProgressBar {
+                    border: 2px solid #cccccc;
+                    border-radius: 5px;
+                    background-color: #ffffff;
+                }
+                QProgressBar::chunk {
+                    background-color: #4a90e2;
+                    border-radius: 3px;
+                }
+                QScrollArea {
+                    background-color: #ffffff;
+                    border: 1px solid #cccccc;
+                }
+                QLabel {
+                    color: #333333;
                 }
             """)
     
