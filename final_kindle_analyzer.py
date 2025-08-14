@@ -248,7 +248,10 @@ class LogProcessor(QThread):
         duration = max_height_end_time - start_time
         if duration < 0:
             duration = abs(duration)
-        
+
+        # Convert duration from milliseconds to seconds
+        duration = duration / 1000.0
+
         return {
             'iteration': int(iteration_num),  # Convert to integer here
             'start': start_time,
@@ -732,10 +735,10 @@ class FinalKindleLogAnalyzer(QMainWindow):
         layout.addWidget(header_label)
         
         # Duration - highlighted
-        duration_label = QLabel(f"⏱️ Duration: {result['duration']} ms")
+        duration_label = QLabel(f"⏱️ Duration: {result['duration']:.3f} seconds")
         duration_label.setStyleSheet(f"""
-            font-weight: bold; 
-            background-color: yellow; 
+            font-weight: bold;
+            background-color: yellow;
             color: black;
             padding: 3px;
             border-radius: 3px;
@@ -1093,19 +1096,19 @@ class FinalKindleLogAnalyzer(QMainWindow):
         <tr><td><b>Test Case:</b></td><td>{self.test_case_input.text() or 'Not specified'}</td></tr>
         <tr><td><b>Processing Mode:</b></td><td>{self.calc_mode_combo.currentText()}</td></tr>
         <tr><td><b>Total Iterations:</b></td><td>{total_iterations}</td></tr>
-        <tr><td><b>Average Duration:</b></td><td style="background-color: yellow;">{avg_duration:.2f} ms</td></tr>
-        <tr><td><b>Min Duration:</b></td><td>{min_duration} ms</td></tr>
-        <tr><td><b>Max Duration:</b></td><td>{max_duration} ms</td></tr>
+        <tr><td><b>Average Duration:</b></td><td style="background-color: yellow;">{avg_duration:.3f} seconds</td></tr>
+        <tr><td><b>Min Duration:</b></td><td>{min_duration:.3f} seconds</td></tr>
+        <tr><td><b>Max Duration:</b></td><td>{max_duration:.3f} seconds</td></tr>
         <tr><td><b>Processing Time:</b></td><td>{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</td></tr>
         </table>
-        
+
         <h3>🎯 Quick Copy Summary for Excel:</h3>
         <pre style="background-color: #f5f5f5; padding: 10px;">
-Iteration    Duration(ms)    Start   Stop    Height  Waveform
+Iteration    Duration(seconds)    Start   Stop    Height  Waveform
 """
-        
+
         for result in self.results:
-            summary_html += f"{result['iteration']}\t{result['duration']}\t{result['start']}\t{result['stop']}\t{result['max_height']}\t{result['max_height_waveform']}\n"
+            summary_html += f"{result['iteration']}\t{result['duration']:.3f}\t{result['start']}\t{result['stop']}\t{result['max_height']}\t{result['max_height_waveform']}\n"
         
         summary_html += "</pre>"
         
@@ -1119,15 +1122,15 @@ Iteration    Duration(ms)    Start   Stop    Height  Waveform
         self.results_table.setRowCount(len(self.results))
         self.results_table.setColumnCount(8)
         
-        headers = ['Iteration', 'Duration (ms)', 'Start Time', 'Stop Time', 
+        headers = ['Iteration', 'Duration (seconds)', 'Start Time', 'Stop Time',
                    'Marker', 'Height', 'Selected Waveform', 'Mode']
         self.results_table.setHorizontalHeaderLabels(headers)
         
         for i, result in enumerate(self.results):
             self.results_table.setItem(i, 0, QTableWidgetItem(str(result['iteration'])))
-            
-            # Highlight the duration cell with yellow background
-            duration_item = QTableWidgetItem(str(result['duration']))
+
+            # Duration is already in seconds
+            duration_item = QTableWidgetItem(f"{result['duration']:.3f}")
             duration_item.setBackground(QBrush(QColor(255, 255, 0, 100)))  # Yellow highlighting
             self.results_table.setItem(i, 1, duration_item)
             
@@ -1276,9 +1279,9 @@ Iteration    Duration(ms)    Start   Stop    Height  Waveform
                         durations = [r['duration'] for r in self.results]
                         f.write("SUMMARY STATISTICS:\n")
                         f.write("-" * 50 + "\n")
-                        f.write(f"Average Duration: {sum(durations)/len(durations):.2f} ms\n")
-                        f.write(f"Min Duration: {min(durations)} ms\n")
-                        f.write(f"Max Duration: {max(durations)} ms\n\n")
+                        f.write(f"Average Duration: {sum(durations)/len(durations)/1000:.3f} seconds\n")
+                        f.write(f"Min Duration: {min(durations)/1000:.3f} seconds\n")
+                        f.write(f"Max Duration: {max(durations)/1000:.3f} seconds\n\n")
                     else:
                         # Batch mode
                         total_files = len(self.batch_results)
@@ -1295,14 +1298,14 @@ Iteration    Duration(ms)    Start   Stop    Height  Waveform
                         if all_durations:
                             f.write("SUMMARY STATISTICS:\n")
                             f.write("-" * 50 + "\n")
-                            f.write(f"Average Duration: {sum(all_durations)/len(all_durations):.2f} ms\n")
-                            f.write(f"Min Duration: {min(all_durations)} ms\n")
-                            f.write(f"Max Duration: {max(all_durations)} ms\n\n")
+                            f.write(f"Average Duration: {sum(all_durations)/1000/len(all_durations):.3f} seconds\n")
+                            f.write(f"Min Duration: {min(all_durations)/1000:.3f} seconds\n")
+                            f.write(f"Max Duration: {max(all_durations)/1000:.3f} seconds\n\n")
 
                     # Quick copy table
                     f.write("QUICK COPY TABLE (Copy-friendly for Excel):\n")
                     f.write("-" * 80 + "\n")
-                    f.write("Iteration\tDuration(ms)\tStart\tStop\tMarker\tHeight\tWaveform\tMode\n")
+                    f.write("Iteration\tDuration(sec)\tStart\tStop\tMarker\tHeight\tWaveform\tMode\n")
                     f.write("-" * 80 + "\n")
 
                     # Write data based on mode
@@ -1352,7 +1355,7 @@ Iteration    Duration(ms)    Start   Stop    Height  Waveform
                             f.write("-" * 30 + "\n")
                             f.write(f"Start Time: {result['start']}\n")
                             f.write(f"Stop Time: {result['stop']}\n")
-                            f.write(f"Duration: {result['duration']} ms [SELECTED]\n")
+                            f.write(f"Duration: {result['duration'] / 1000:.3f} seconds [SELECTED]\n")
                             f.write(f"Selected Marker: {result['marker']}\n")
                             f.write(f"Selected Height: {result['max_height']}px\n")
                             f.write(f"Selected Waveform: {result['max_height_waveform']} [HIGHLIGHTED]\n\n")
@@ -1404,7 +1407,7 @@ Iteration    Duration(ms)    Start   Stop    Height  Waveform
                                     f.write("  " + "-" * 20 + "\n")
                                     f.write(f"  Start Time: {result['start']}\n")
                                     f.write(f"  Stop Time: {result['stop']}\n")
-                                    f.write(f"  Duration: {result['duration']} ms [SELECTED]\n")
+                                    f.write(f"  Duration: {result['duration'] / 1000:.3f} seconds [SELECTED]\n")
                                     f.write(f"  Selected Marker: {result['marker']}\n")
                                     f.write(f"  Selected Height: {result['max_height']}px\n")
                                     f.write(f"  Selected Waveform: {result['max_height_waveform']} [HIGHLIGHTED]\n\n")
@@ -1458,7 +1461,7 @@ Iteration    Duration(ms)    Start   Stop    Height  Waveform
                 sheet.title = "Main Results"
 
                 # Headers
-                headers = ['Iteration', 'Duration (ms)', 'Start Time', 'Stop Time',
+                headers = ['Iteration', 'Duration (seconds)', 'Start Time', 'Stop Time',
                           'Marker', 'Height', 'Selected Waveform', 'Mode']
                 for col, header in enumerate(headers, 1):
                     cell = sheet.cell(row=1, column=col, value=header)
