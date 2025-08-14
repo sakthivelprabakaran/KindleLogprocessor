@@ -1136,13 +1136,14 @@ class FinalKindleLogAnalyzer(QMainWindow):
         """Update summary display"""
         if not self.results:
             return
-        
+
         total_iterations = len(self.results)
         durations = [r['duration'] for r in self.results]
         avg_duration = sum(durations) / total_iterations
         min_duration = min(durations)
         max_duration = max(durations)
-        
+
+        # Create the new format for Quick Copy Summary for Excel
         summary_html = f"""
         <h2>📊 Processing Summary</h2>
         <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse;">
@@ -1155,16 +1156,32 @@ class FinalKindleLogAnalyzer(QMainWindow):
         <tr><td><b>Processing Time:</b></td><td>{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}</td></tr>
         </table>
 
-        <h3>🎯 Quick Copy Summary for Excel:</h3>
-        <pre style="background-color: #f5f5f5; padding: 10px;">
-Iteration    Duration(seconds)    Start   Stop    Height  Waveform
+        <h3>📋 Iteration with Average:</h3>
+        <table border="1" cellpadding="8" cellspacing="0" style="border-collapse: collapse; margin-top: 10px;">
+        <tr style="background-color: #f0f0f0;">
+        <td><b>Test case name</b></td>
 """
 
+        # Add iteration columns
+        for i in range(1, total_iterations + 1):
+            summary_html += f"<td><b>IT_{i:02d}</b></td>"
+
+        # Add AVG column
+        summary_html += "<td><b>AVG</b></td></tr>"
+
+        # Add duration values
+        test_case_name = self.test_case_input.text() or 'Not specified'
+        summary_html += f"<tr><td><b>{test_case_name}</b></td>"
+
+        # Add duration for each iteration
         for result in self.results:
-            summary_html += f"{result['iteration']}\t{result['duration']:.3f}\t{result['start']}\t{result['stop']}\t{result['max_height']}\t{result['max_height_waveform']}\n"
-        
-        summary_html += "</pre>"
-        
+            summary_html += f"<td>{result['duration']:.3f}</td>"
+
+        # Add average duration
+        summary_html += f"<td>{avg_duration:.3f}</td></tr>"
+
+        summary_html += "</table>"
+
         self.summary_text.setHtml(summary_html)
     
     def update_results_table(self):
