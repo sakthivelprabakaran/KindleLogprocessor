@@ -1185,38 +1185,50 @@ Iteration    Duration(ms)    Start   Stop    Height  Waveform
         self.heights_table.resizeColumnsToContents()
     
     def generate_pdf_report(self):
-        """Generate PDF report with highlighted start/stop points"""
-        if not self.results:
+        """Generate enhanced PDF report with highlighting"""
+        # Check if we have results (single mode) or batch results
+        if not self.results and not self.batch_results:
             QMessageBox.warning(self, "Warning", "No results to generate PDF")
             return
-        
+
         if not ENHANCED_EXPORTS_AVAILABLE:
             QMessageBox.warning(self, "Warning", "Enhanced PDF export modules not available")
             return
-        
+
         # Get filename from user
         default_filename = f"{self.test_case_input.text() or 'kindle_analysis'}_report.pdf"
         filename, _ = QFileDialog.getSaveFileName(
             self, "Save PDF Report", default_filename, "PDF Files (*.pdf)"
         )
-        
+
         if filename:
             try:
                 # Create PDF exporter and generate report
                 exporter = PdfExporter()
-                
+
                 # Map GUI mode to internal mode
-                mode_map = {"Default (Button Up)": "default", 
-                           "Swipe (Button Down)": "swipe", 
+                mode_map = {"Default (Button Up)": "default",
+                           "Swipe (Button Down)": "swipe",
                            "Suspend (Power Button - FIXED)": "suspend"}
                 current_mode = mode_map.get(self.calc_mode_combo.currentText(), "default")
-                
-                success, message = exporter.generate_pdf_report(
-                    self.results, filename, current_mode
-                )
-                
+
+                # Determine which data to use
+                if self.results:
+                    # Single entry mode
+                    success, message = exporter.generate_pdf_report(
+                        self.results, filename, current_mode
+                    )
+                else:
+                    # Batch mode - flatten batch results
+                    flattened_results = []
+                    for batch in self.batch_results:
+                        flattened_results.extend(batch['results'])
+                    success, message = exporter.generate_pdf_report(
+                        flattened_results, filename, current_mode
+                    )
+
                 if success:
-                    QMessageBox.information(self, "Success", 
+                    QMessageBox.information(self, "Success",
                         f"PDF report generated successfully!\n\n"
                         f"Features included:\n"
                         f"• Table of contents with iteration summary\n"
@@ -1226,224 +1238,382 @@ Iteration    Duration(ms)    Start   Stop    Height  Waveform
                         f"Saved to: {filename}")
                 else:
                     QMessageBox.critical(self, "Error", f"Failed to generate PDF: {message}")
-            
+
             except Exception as e:
                 QMessageBox.critical(self, "Error", f"Failed to generate PDF report: {str(e)}")
-    
+
     def save_enhanced_txt_report(self):
         """Save enhanced TXT report with original logs for each iteration"""
-        if not self.results:
+        # Check if we have results (single mode) or batch results
+        if not self.results and not self.batch_results:
             QMessageBox.warning(self, "Warning", "No results to save")
             return
-        
+
         filename, _ = QFileDialog.getSaveFileName(
-            self, "Save Enhanced TXT Report", 
-            f"{self.test_case_input.text() or 'kindle_analysis'}_enhanced.txt", 
+            self, "Save Enhanced TXT Report",
+            f"{self.test_case_input.text() or 'kindle_analysis'}_enhanced.txt",
             "Text Files (*.txt)"
         )
-        
+
         if filename:
             try:
                 with open(filename, 'w', encoding='utf-8') as f:
                     f.write("=" * 100 + "\n")
                     f.write("KINDLE LOG ANALYZER - ENHANCED REPORT WITH ORIGINAL LOGS\n")
                     f.write("=" * 100 + "\n\n")
-                    
+
+                    # Write test case info
                     f.write(f"Test Case: {self.test_case_input.text() or 'Not specified'}\n")
                     f.write(f"Processing Mode: {self.calc_mode_combo.currentText()}\n")
                     f.write(f"Generated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\n")
-                    f.write(f"Total Iterations: {len(self.results)}\n\n")
-                    
-                    # Summary statistics
-                    durations = [r['duration'] for r in self.results]
-                    f.write("SUMMARY STATISTICS:\n")
-                    f.write("-" * 50 + "\n")
-                    f.write(f"Average Duration: {sum(durations)/len(durations):.2f} ms\n")
-                    f.write(f"Min Duration: {min(durations)} ms\n")
-                    f.write(f"Max Duration: {max(durations)} ms\n\n")
-                    
+
+                    # Determine which data to use and write appropriate summary
+                    if self.results:
+                        # Single entry mode
+                        f.write(f"Total Iterations: {len(self.results)}\n\n")
+
+                        # Summary statistics for single mode
+                        durations = [r['duration'] for r in self.results]
+                        f.write("SUMMARY STATISTICS:\n")
+                        f.write("-" * 50 + "\n")
+                        f.write(f"Average Duration: {sum(durations)/len(durations):.2f} ms\n")
+                        f.write(f"Min Duration: {min(durations)} ms\n")
+                        f.write(f"Max Duration: {max(durations)} ms\n\n")
+                    else:
+                        # Batch mode
+                        total_files = len(self.batch_results)
+                        total_iterations = sum(len(batch['results']) for batch in self.batch_results)
+                        f.write(f"Total Files Processed: {total_files}\n")
+                        f.write(f"Total Iterations: {total_iterations}\n\n")
+
+                        # Summary statistics for batch mode
+                        all_durations = []
+                        for batch in self.batch_results:
+                            for result in batch['results']:
+                                all_durations.append(result['duration'])
+
+                        if all_durations:
+                            f.write("SUMMARY STATISTICS:\n")
+                            f.write("-" * 50 + "\n")
+                            f.write(f"Average Duration: {sum(all_durations)/len(all_durations):.2f} ms\n")
+                            f.write(f"Min Duration: {min(all_durations)} ms\n")
+                            f.write(f"Max Duration: {max(all_durations)} ms\n\n")
+
                     # Quick copy table
                     f.write("QUICK COPY TABLE (Copy-friendly for Excel):\n")
                     f.write("-" * 80 + "\n")
                     f.write("Iteration\tDuration(ms)\tStart\tStop\tMarker\tHeight\tWaveform\tMode\n")
                     f.write("-" * 80 + "\n")
-                    
-                    for result in self.results:
-                        f.write(f"{result['iteration']}\t{result['duration']}\t{result['start']}\t"
-                               f"{result['stop']}\t{result['marker']}\t{result['max_height']}\t"
-                               f"{result['max_height_waveform']}\t{result['mode']}\n")
-                    
+
+                    # Write data based on mode
+                    if self.results:
+                        # Single entry mode
+                        for result in self.results:
+                            f.write(f"{result['iteration']}\t{result['duration']}\t{result['start']}\t"
+                                   f"{result['stop']}\t{result['marker']}\t{result['max_height']}\t"
+                                   f"{result['max_height_waveform']}\t{result['mode']}\n")
+                    else:
+                        # Batch mode
+                        for batch in self.batch_results:
+                            for result in batch['results']:
+                                f.write(f"{batch['filename']}_iter{result['iteration']}\t{result['duration']}\t{result['start']}\t"
+                                       f"{result['stop']}\t{result['marker']}\t{result['max_height']}\t"
+                                       f"{result['max_height_waveform']}\t{result['mode']}\n")
+
                     f.write("\n" + "=" * 100 + "\n")
                     f.write("DETAILED ITERATION ANALYSIS WITH ORIGINAL LOGS\n")
                     f.write("=" * 100 + "\n\n")
-                    
-                    for result in self.results:
-                        f.write(f"ITERATION_{result['iteration']:02d}\n")
-                        f.write("=" * 50 + "\n\n")
-                        
-                        # Original log content
-                        f.write("ORIGINAL LOG DATA:\n")
-                        f.write("-" * 30 + "\n")
-                        
-                        if 'original_log' in result:
-                            log_lines = result['original_log'].split('\n')
-                            for line in log_lines:
-                                if line.strip():
-                                    # Mark the start line with highlighting annotation
-                                    if 'start_line' in result and result['start_line'] in line:
-                                        f.write(f">>> START POINT >>> {line}\n")
-                                    else:
-                                        f.write(f"{line}\n")
-                        else:
-                            f.write("Original log data not available\n")
-                        
-                        f.write("\n")
-                        f.write("CALCULATION RESULTS:\n")
-                        f.write("-" * 30 + "\n")
-                        f.write(f"Start Time: {result['start']}\n")
-                        f.write(f"Stop Time: {result['stop']}\n")
-                        f.write(f"Duration: {result['duration']} ms [SELECTED]\n")
-                        f.write(f"Selected Marker: {result['marker']}\n")
-                        f.write(f"Selected Height: {result['max_height']}px\n")
-                        f.write(f"Selected Waveform: {result['max_height_waveform']} [HIGHLIGHTED]\n\n")
-                        
-                        f.write("ALL HEIGHTS & WAVEFORMS:\n")
-                        f.write("-" * 30 + "\n")
-                        for height_info in result['all_heights']:
-                            marker = height_info['marker']
-                            selected = " [SELECTED FOR CALCULATION]" if str(marker) == str(result['marker']) else ""
-                            f.write(f"  Marker {marker}: {height_info['height']}px, {height_info['waveform']}{selected}\n")
-                        
-                        if 'all_end_times' in result:
-                            f.write("\nEND TIMES BY MARKER:\n")
+
+                    # Write detailed analysis based on mode
+                    if self.results:
+                        # Single entry mode
+                        for result in self.results:
+                            f.write(f"ITERATION_{result['iteration']:02d}\n")
+                            f.write("=" * 50 + "\n\n")
+
+                            # Original log content
+                            f.write("ORIGINAL LOG DATA:\n")
                             f.write("-" * 30 + "\n")
-                            for marker, end_info in result['all_end_times'].items():
-                                selected = " [SELECTED]" if str(marker) == str(result['marker']) else ""
-                                f.write(f"  Marker {marker}: {end_info['time']}{selected}\n")
-                        
-                        f.write("\n" + "=" * 50 + "\n\n")
-                    
+
+                            if 'original_log' in result:
+                                log_lines = result['original_log'].split('\n')
+                                for line in log_lines:
+                                    if line.strip():
+                                        # Mark the start line with highlighting annotation
+                                        if 'start_line' in result and result['start_line'] in line:
+                                            f.write(f">>> START POINT >>> {line}\n")
+                                        else:
+                                            f.write(f"{line}\n")
+                            else:
+                                f.write("Original log data not available\n")
+
+                            f.write("\n")
+                            f.write("CALCULATION RESULTS:\n")
+                            f.write("-" * 30 + "\n")
+                            f.write(f"Start Time: {result['start']}\n")
+                            f.write(f"Stop Time: {result['stop']}\n")
+                            f.write(f"Duration: {result['duration']} ms [SELECTED]\n")
+                            f.write(f"Selected Marker: {result['marker']}\n")
+                            f.write(f"Selected Height: {result['max_height']}px\n")
+                            f.write(f"Selected Waveform: {result['max_height_waveform']} [HIGHLIGHTED]\n\n")
+
+                            f.write("ALL HEIGHTS & WAVEFORMS:\n")
+                            f.write("-" * 30 + "\n")
+                            for height_info in result['all_heights']:
+                                marker = height_info['marker']
+                                selected = " [SELECTED FOR CALCULATION]" if str(marker) == str(result['marker']) else ""
+                                f.write(f"  Marker {marker}: {height_info['height']}px, {height_info['waveform']}{selected}\n")
+
+                            if 'all_end_times' in result:
+                                f.write("\nEND TIMES BY MARKER:\n")
+                                f.write("-" * 30 + "\n")
+                                for marker, end_info in result['all_end_times'].items():
+                                    selected = " [SELECTED]" if str(marker) == str(result['marker']) else ""
+                                    f.write(f"  Marker {marker}: {end_info['time']}{selected}\n")
+
+                            f.write("\n" + "=" * 50 + "\n\n")
+                    else:
+                        # Batch mode
+                        for batch in self.batch_results:
+                            f.write(f"FILE: {batch['filename']}\n")
+                            f.write("=" * 60 + "\n\n")
+
+                            if batch['results']:
+                                for result in batch['results']:
+                                    f.write(f"  ITERATION_{result['iteration']:02d}\n")
+                                    f.write("  " + "-" * 40 + "\n\n")
+
+                                    # Original log content
+                                    f.write("  ORIGINAL LOG DATA:\n")
+                                    f.write("  " + "-" * 20 + "\n")
+
+                                    if 'original_log' in result:
+                                        log_lines = result['original_log'].split('\n')
+                                        for line in log_lines:
+                                            if line.strip():
+                                                # Mark the start line with highlighting annotation
+                                                if 'start_line' in result and result['start_line'] in line:
+                                                    f.write(f"  >>> START POINT >>> {line}\n")
+                                                else:
+                                                    f.write(f"  {line}\n")
+                                    else:
+                                        f.write("  Original log data not available\n")
+
+                                    f.write("\n")
+                                    f.write("  CALCULATION RESULTS:\n")
+                                    f.write("  " + "-" * 20 + "\n")
+                                    f.write(f"  Start Time: {result['start']}\n")
+                                    f.write(f"  Stop Time: {result['stop']}\n")
+                                    f.write(f"  Duration: {result['duration']} ms [SELECTED]\n")
+                                    f.write(f"  Selected Marker: {result['marker']}\n")
+                                    f.write(f"  Selected Height: {result['max_height']}px\n")
+                                    f.write(f"  Selected Waveform: {result['max_height_waveform']} [HIGHLIGHTED]\n\n")
+
+                                    f.write("  ALL HEIGHTS & WAVEFORMS:\n")
+                                    f.write("  " + "-" * 20 + "\n")
+                                    for height_info in result['all_heights']:
+                                        marker = height_info['marker']
+                                        selected = " [SELECTED FOR CALCULATION]" if str(marker) == str(result['marker']) else ""
+                                        f.write(f"    Marker {marker}: {height_info['height']}px, {height_info['waveform']}{selected}\n")
+
+                                    if 'all_end_times' in result:
+                                        f.write("\n  END TIMES BY MARKER:\n")
+                                        f.write("  " + "-" * 20 + "\n")
+                                        for marker, end_info in result['all_end_times'].items():
+                                            selected = " [SELECTED]" if str(marker) == str(result['marker']) else ""
+                                            f.write(f"    Marker {marker}: {end_info['time']}{selected}\n")
+
+                                    f.write("\n  " + "=" * 40 + "\n\n")
+                            else:
+                                f.write("  No valid results found in this file.\n\n")
+
                     f.write("=" * 100 + "\n")
                     f.write("END OF ENHANCED REPORT\n")
                     f.write("=" * 100 + "\n")
-                
+
                 QMessageBox.information(self, "Success", f"Enhanced TXT report with original logs saved to:\n{filename}")
-            
+
             except Exception as e:
                 QMessageBox.critical(self, "Error", f"Failed to save enhanced TXT report: {str(e)}")
     
     def export_excel_with_highlighting(self):
         """Export to Excel with yellow highlighting"""
-        if not self.results:
+        # Check if we have results (single mode) or batch results
+        if not self.results and not self.batch_results:
             QMessageBox.warning(self, "Warning", "No results to export")
             return
-        
+
         filename, _ = QFileDialog.getSaveFileName(
-            self, "Export Excel with Highlighting", 
-            f"{self.test_case_input.text() or 'kindle_analysis'}_highlighted.xlsx", 
+            self, "Export Excel with Highlighting",
+            f"{self.test_case_input.text() or 'kindle_analysis'}_highlighted.xlsx",
             "Excel Files (*.xlsx)"
         )
-        
+
         if filename:
             try:
                 workbook = openpyxl.Workbook()
-                
+
                 # Main Results Sheet
                 sheet = workbook.active
                 sheet.title = "Main Results"
-                
+
                 # Headers
-                headers = ['Iteration', 'Duration (ms)', 'Start Time', 'Stop Time', 
+                headers = ['Iteration', 'Duration (ms)', 'Start Time', 'Stop Time',
                           'Marker', 'Height', 'Selected Waveform', 'Mode']
                 for col, header in enumerate(headers, 1):
                     cell = sheet.cell(row=1, column=col, value=header)
                     cell.font = Font(bold=True, color="FFFFFF")
                     cell.fill = PatternFill(start_color="4A90E2", end_color="4A90E2", fill_type="solid")
-                
+
                 # Data with highlighting
                 yellow_fill = PatternFill(start_color="FFFF00", end_color="FFFF00", fill_type="solid")
-                
-                for row, result in enumerate(self.results, 2):
-                    sheet.cell(row=row, column=1, value=result['iteration'])
-                    
-                    # Highlight duration
-                    duration_cell = sheet.cell(row=row, column=2, value=result['duration'])
-                    duration_cell.fill = yellow_fill
-                    
-                    sheet.cell(row=row, column=3, value=result['start'])
-                    sheet.cell(row=row, column=4, value=result['stop'])
-                    sheet.cell(row=row, column=5, value=result['marker'])
-                    sheet.cell(row=row, column=6, value=result['max_height'])
-                    
-                    # Highlight selected waveform
-                    waveform_cell = sheet.cell(row=row, column=7, value=result['max_height_waveform'])
-                    waveform_cell.fill = yellow_fill
-                    
-                    sheet.cell(row=row, column=8, value=result['mode'])
-                
+
+                # Write data based on mode
+                row = 2
+                if self.results:
+                    # Single entry mode
+                    for result in self.results:
+                        sheet.cell(row=row, column=1, value=result['iteration'])
+
+                        # Highlight duration
+                        duration_cell = sheet.cell(row=row, column=2, value=result['duration'])
+                        duration_cell.fill = yellow_fill
+
+                        sheet.cell(row=row, column=3, value=result['start'])
+                        sheet.cell(row=row, column=4, value=result['stop'])
+                        sheet.cell(row=row, column=5, value=result['marker'])
+                        sheet.cell(row=row, column=6, value=result['max_height'])
+
+                        # Highlight selected waveform
+                        waveform_cell = sheet.cell(row=row, column=7, value=result['max_height_waveform'])
+                        waveform_cell.fill = yellow_fill
+
+                        sheet.cell(row=row, column=8, value=result['mode'])
+                        row += 1
+                else:
+                    # Batch mode
+                    for batch in self.batch_results:
+                        for result in batch['results']:
+                            sheet.cell(row=row, column=1, value=f"{batch['filename']}_iter{result['iteration']}")
+
+                            # Highlight duration
+                            duration_cell = sheet.cell(row=row, column=2, value=result['duration'])
+                            duration_cell.fill = yellow_fill
+
+                            sheet.cell(row=row, column=3, value=result['start'])
+                            sheet.cell(row=row, column=4, value=result['stop'])
+                            sheet.cell(row=row, column=5, value=result['marker'])
+                            sheet.cell(row=row, column=6, value=result['max_height'])
+
+                            # Highlight selected waveform
+                            waveform_cell = sheet.cell(row=row, column=7, value=result['max_height_waveform'])
+                            waveform_cell.fill = yellow_fill
+
+                            sheet.cell(row=row, column=8, value=result['mode'])
+                            row += 1
+
                 # Auto-size columns
                 for column in sheet.columns:
                     max_length = 0
                     column_letter = column[0].column_letter
                     for cell in column:
                         try:
-                            if len(str(cell.value)) > max_length:
-                                max_length = len(str(cell.value))
+                            if cell.value:
+                                length = len(str(cell.value))
+                                if length > max_length:
+                                    max_length = length
                         except:
                             pass
                     adjusted_width = min(max_length + 2, 50)
                     sheet.column_dimensions[column_letter].width = adjusted_width
-                
+
                 # Detailed Heights Sheet
                 detail_sheet = workbook.create_sheet(title="Heights & Waveforms")
-                
+
                 detail_headers = ['Iteration', 'Marker', 'Height', 'Waveform', 'Selected', 'End Time']
                 for col, header in enumerate(detail_headers, 1):
                     cell = detail_sheet.cell(row=1, column=col, value=header)
                     cell.font = Font(bold=True, color="FFFFFF")
                     cell.fill = PatternFill(start_color="4A90E2", end_color="4A90E2", fill_type="solid")
-                
+
                 detail_row = 2
-                for result in self.results:
-                    for height_info in result['all_heights']:
-                        detail_sheet.cell(row=detail_row, column=1, value=result['iteration'])
-                        detail_sheet.cell(row=detail_row, column=2, value=height_info['marker'])
-                        detail_sheet.cell(row=detail_row, column=3, value=height_info['height'])
-                        detail_sheet.cell(row=detail_row, column=4, value=height_info['waveform'])
-                        
-                        # Highlight selected rows
-                        is_selected = str(height_info['marker']) == str(result['marker'])
-                        selected_cell = detail_sheet.cell(row=detail_row, column=5, value="✓" if is_selected else "")
-                        if is_selected:
-                            selected_cell.fill = yellow_fill
-                            # Highlight entire row for selected marker
-                            for col in range(1, 7):
-                                detail_sheet.cell(row=detail_row, column=col).fill = yellow_fill
-                        
-                        # End time
-                        end_time = ""
-                        if 'all_end_times' in result and str(height_info['marker']) in result['all_end_times']:
-                            end_time = result['all_end_times'][str(height_info['marker'])]['time']
-                        detail_sheet.cell(row=detail_row, column=6, value=end_time)
-                        
-                        detail_row += 1
-                
+                # Write detailed data based on mode
+                if self.results:
+                    # Single entry mode
+                    for result in self.results:
+                        for height_info in result['all_heights']:
+                            detail_sheet.cell(row=detail_row, column=1, value=result['iteration'])
+                            detail_sheet.cell(row=detail_row, column=2, value=height_info['marker'])
+                            detail_sheet.cell(row=detail_row, column=3, value=height_info['height'])
+                            detail_sheet.cell(row=detail_row, column=4, value=height_info['waveform'])
+
+                            # Highlight selected rows
+                            is_selected = str(height_info['marker']) == str(result['marker'])
+                            selected_cell = detail_sheet.cell(row=detail_row, column=5, value="✓" if is_selected else "")
+                            if is_selected:
+                                selected_cell.fill = yellow_fill
+                                # Highlight entire row for selected marker
+                                for col in range(1, 7):
+                                    detail_sheet.cell(row=detail_row, column=col).fill = yellow_fill
+
+                            # End time
+                            end_time = ""
+                            if 'all_end_times' in result and str(height_info['marker']) in result['all_end_times']:
+                                end_time = result['all_end_times'][str(height_info['marker'])]['time']
+                            detail_sheet.cell(row=detail_row, column=6, value=end_time)
+
+                            detail_row += 1
+                else:
+                    # Batch mode
+                    for batch in self.batch_results:
+                        for result in batch['results']:
+                            for height_info in result['all_heights']:
+                                detail_sheet.cell(row=detail_row, column=1, value=f"{batch['filename']}_iter{result['iteration']}")
+                                detail_sheet.cell(row=detail_row, column=2, value=height_info['marker'])
+                                detail_sheet.cell(row=detail_row, column=3, value=height_info['height'])
+                                detail_sheet.cell(row=detail_row, column=4, value=height_info['waveform'])
+
+                                # Highlight selected rows
+                                is_selected = str(height_info['marker']) == str(result['marker'])
+                                selected_cell = detail_sheet.cell(row=detail_row, column=5, value="✓" if is_selected else "")
+                                if is_selected:
+                                    selected_cell.fill = yellow_fill
+                                    # Highlight entire row for selected marker
+                                    for col in range(1, 7):
+                                        detail_sheet.cell(row=detail_row, column=col).fill = yellow_fill
+
+                                # End time
+                                end_time = ""
+                                if 'all_end_times' in result and str(height_info['marker']) in result['all_end_times']:
+                                    end_time = result['all_end_times'][str(height_info['marker'])]['time']
+                                detail_sheet.cell(row=detail_row, column=6, value=end_time)
+
+                                detail_row += 1
+
                 # Auto-size columns for detail sheet
                 for column in detail_sheet.columns:
                     max_length = 0
                     column_letter = column[0].column_letter
                     for cell in column:
                         try:
-                            if len(str(cell.value)) > max_length:
-                                max_length = len(str(cell.value))
+                            if cell.value:
+                                length = len(str(cell.value))
+                                if length > max_length:
+                                    max_length = length
                         except:
                             pass
                     adjusted_width = min(max_length + 2, 50)
                     detail_sheet.column_dimensions[column_letter].width = adjusted_width
-                
+
                 workbook.save(filename)
                 QMessageBox.information(self, "Success", f"Excel file with highlighting saved to:\n{filename}")
-            
+
+            except Exception as e:
+                QMessageBox.critical(self, "Error", f"Failed to save Excel file: {str(e)}")
+                    
+                workbook.save(filename)
+                QMessageBox.information(self, "Success", f"Excel file with highlighting saved to:\n{filename}")
+
             except Exception as e:
                 QMessageBox.critical(self, "Error", f"Failed to save Excel file: {str(e)}")
     
@@ -1470,49 +1640,51 @@ Iteration    Duration(ms)    Start   Stop    Height  Waveform
         """Process batch files"""
         if not self.loaded_files:
             return
-        
+
         self.status_label.setText("Processing batch files...")
         self.batch_results = []
-        
+
         for file_path in self.loaded_files:
             try:
                 with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
                     content = f.read()
-                
+
                 # Process content using log processor
                 processor = LogProcessor(content, self.current_mode)
                 # Simulate processing for batch
                 iterations = re.split(r'ITERATION_(\d+)', content)[1:]
                 if not iterations:
                     iterations = ["01", content]
-                
+
                 iteration_pairs = []
                 for i in range(0, len(iterations), 2):
                     if i+1 < len(iterations):
                         iteration_num = iterations[i]
                         iteration_content = iterations[i+1]
                         iteration_pairs.append((iteration_num, iteration_content))
-                
+
                 file_results = []
-                
+
                 for iteration_num, iteration_content in iteration_pairs:
                     lines = iteration_content.split('\n')
                     result = processor.process_iteration(lines, iteration_num, self.current_mode)
                     if result:
                         result['original_log'] = iteration_content.strip()
                         file_results.append(result)
-                
+
                 self.batch_results.append({
                     'filename': os.path.basename(file_path),
                     'results': file_results
                 })
-            
+
             except Exception as e:
                 QMessageBox.warning(self, "Warning", f"Error processing {file_path}: {str(e)}")
-        
+
         self.update_batch_display()
+        if self.batch_results:
+            self.enable_export_buttons()
         self.status_label.setText(f"Processed {len(self.loaded_files)} files")
-    
+
     def update_batch_display(self):
         """Update batch results display"""
         if not self.batch_results:
