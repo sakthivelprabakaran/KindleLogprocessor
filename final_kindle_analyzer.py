@@ -791,10 +791,21 @@ class FinalKindleLogAnalyzer(QMainWindow):
         return box
     
     def copy_iteration_data(self, result):
-        """Copy iteration data to clipboard"""
-        data = f"{result['iteration']}\t{result['duration']}\t{result['start']}\t{result['stop']}\t{result['max_height']}\t{result['max_height_waveform']}"
+        """Copy iteration data to clipboard in the requested format"""
+        # Create a list to store the height and waveform information
+
+        # Iterate through all heights and extract the required information with numbering
+        height_waveform_data = []
+        for idx, height_info in enumerate(result['all_heights'], 1):
+            height = height_info['height']
+            waveform = height_info['waveform']
+            height_waveform_data.append(f"{idx}. Height - {height}, Waveform - {waveform}")
+
+        # Join all entries with newlines
+        data = "\n".join(height_waveform_data)
+
         QApplication.clipboard().setText(data)
-        self.status_label.setText(f"Copied Iteration {result['iteration']} data to clipboard")
+        self.status_label.setText(f"Copied Iteration {result['iteration']} waveform data to clipboard")
     
     def update_waveform_boxes(self):
         """Update the waveform boxes grid"""
